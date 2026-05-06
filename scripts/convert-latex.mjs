@@ -2,7 +2,7 @@
 import { execFileSync } from 'node:child_process';
 import {
   mkdirSync, copyFileSync, readdirSync, existsSync,
-  writeFileSync, unlinkSync,
+  writeFileSync, unlinkSync, readFileSync,
 } from 'node:fs';
 import { join } from 'node:path';
 
@@ -44,12 +44,43 @@ const chapters = [
 mkdirSync(DOCS, { recursive: true });
 mkdirSync(IMG, { recursive: true });
 
+// Sanitize a LaTeX chapter fragment so pandoc can parse it as a self-contained doc.
+// Many chapters in this repo include a stray \begin{document} (or even \documentclass)
+// without a matching \end{document}; some are pure body fragments. Normalize by
+// stripping preamble-y things and ensuring a single matched begin/end document pair.
+function sanitizeLatex(src) {
+  let s = src;
+  // Drop preamble directives that don't belong inside a chapter body.
+  s = s.replace(/^\s*\\documentclass\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\usepackage\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\input\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\include\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\bibliography\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\bibliographystyle\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\maketitle\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\title\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\author\b[^\n]*\n/gm, '');
+  s = s.replace(/^\s*\\date\b[^\n]*\n/gm, '');
+  // Remove existing begin/end document so we can wrap exactly one pair.
+  s = s.replace(/\\begin\{document\}/g, '');
+  s = s.replace(/\\end\{document\}/g, '');
+  return `\\documentclass{article}\n\\begin{document}\n${s.trim()}\n\\end{document}\n`;
+}
+
 function pandocToMd(inFile) {
-  return execFileSync(
-    PANDOC,
-    [inFile, '-f', 'latex', '-t', 'gfm+tex_math_dollars', '--wrap=none'],
-    { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }
-  );
+  const raw = readFileSync(inFile, 'utf8');
+  const sanitized = sanitizeLatex(raw);
+  const tmp = `${inFile}.__tmp_sanitized.tex`;
+  writeFileSync(tmp, sanitized);
+  try {
+    return execFileSync(
+      PANDOC,
+      [tmp, '-f', 'latex', '-t', 'gfm+tex_math_dollars', '--wrap=none'],
+      { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }
+    );
+  } finally {
+    if (existsSync(tmp)) unlinkSync(tmp);
+  }
 }
 
 // Rewrite image refs to /img/<slug>/<filename>

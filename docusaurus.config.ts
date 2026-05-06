@@ -29,7 +29,20 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: 'docs',
-          exclude: ['superpowers/**'],
+          exclude: [
+            'superpowers/**',
+            // Uncleaned raw Pandoc output — re-enabled per chapter as Tasks 6-8 clean each.
+            'literature-review.md',
+            'system-description.md',
+            'hardware.md',
+            'backend.md',
+            'frontend.md',
+            'ai.md',
+            'vehicle-simulator.md',
+            'conclusions.md',
+            'references.md',
+            'appendix.md',
+          ],
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
