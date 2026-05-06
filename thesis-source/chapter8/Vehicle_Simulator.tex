@@ -1,0 +1,339 @@
+\begin{document}
+
+\maketitle
+
+\chapter{Vehicle Simulator}
+
+\section{Introduction}
+Vehicle Simulation is a software-based system that behaves like real vehicle. It sends fake GPS location and updates to the Fleet Management System which are similar to real vehicles. Rather than employing actual vehicles with hardware devices, such as GPS trackers in cars, this software simulator can perform full system testing on a pc.
+
+\section{What It Does}
+The simulator works in following manner:
+\begin{itemize}
+    \item Sends GPS location updates every 3 seconds (pretending to be a vehicle moving)
+    \item Checks backend server every 5 seconds to see if there’s new work to do
+    \item Moves vehicles along calculated routes on maps
+    \item Publishes location and status updates through MQTT (a messaging system) (as discussed in Chapter 4 Backend Implementation)
+    \item Talks to the backend server through API calls (like sending messages)
+    \item Calculates travel routes automatically
+    \item Simulates work time at each location
+\end{itemize}
+
+\section{Main Uses (Why Do We Need It?)}
+\begin{itemize}
+    \item Test how the dispatch system works without buying real vehicles
+    \item Show customers how the fleet tracking system looks and works
+    \item Use software instead of ESP32/Arduino devices
+    \item Integration Testing: Test if the dispatch engine sends work correctly
+    \item Train team members how the system works
+    \item No need for real vehicles or expensive GPS hardware to test
+\end{itemize}
+
+\section{Technology Used}
+The Vehicle Simulator uses these technologies:
+\begin{itemize}
+    \item Runtime: Node.js
+    \item HTTP Communication: Axios library for API calls
+    \item MQTT Messaging: mqtt v5.3.0 for GPS and status publishing (as discussed in Chapter 4 Backend Implementation)
+    \item Configuration: dotenv for environment variables
+\end{itemize}
+
+\section{System Architecture}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapter8/figs/8.1.png} % Assuming first image
+    \caption{Architecture of system which shows how the vehicle simulator communicates with the backend, MQTT broker, and routing services to manage vehicle movement.}
+    \label{fig:7.1}
+\end{figure}
+
+This diagram shows the overall architecture of the vehicle simulator and how it interacts with the backend, MQTT broker, and routing service. The Node.js vehicle simulator uses an API client to talk to the backend REST APIs, an MQTT publisher to send GPS and status messages to the MQTT broker, and a routing service that calculates OSRM routes with a Haversine fallback when OSRM is not available.
+
+\section{Main Components}
+
+\subsection{Vehicle Simulator (Main Controller)}
+This is the brain of the system.
+
+Responsibilities:
+\begin{itemize}
+    \item Manages all vehicles
+    \item Moves vehicles step by step
+    \item Sends GPS every 3 seconds
+    \item Checks for new dispatches every 5 seconds
+    \item Detects arrival and completion of work
+\end{itemize}
+
+Each vehicle stores
+\begin{itemize}
+    \item Current location
+    \item Speed and direction
+    \item Status (available, onRoute, working)
+    \item Assigned fault
+\end{itemize}
+
+\subsection{API Client (Backend Communication)}
+It connects with the backend server.
+
+It is used to:
+\begin{itemize}
+    \item Fetch vehicles
+    \item Send GPS data
+    \item Update vehicle status
+    \item Get assigned faults
+\end{itemize}
+
+It also supports: Auto login, Token handling, Retry on errors
+
+\subsection{MQTT Publisher}
+MQTT is used to simulate real hardware communication. (as discussed in Chapter 4)
+
+It sends:
+\begin{itemize}
+    \item GPS updates
+    \item Vehicle status updates
+    \item Work completion messages (forwarded to the frontend via WebSocket, as discussed in the Frontend chapter)
+\end{itemize}
+
+Automatically reconnects if the MQTT connection is lost.
+
+MQTT Topics: vehicle/\{number\}/gps, vehicle/\{number\}/status, vehicle/\{number\}/resolved
+
+\subsection{Routing Service}
+This service calculates routes between two points.
+
+Routing methods:
+\begin{enumerate}
+    \item OSRM (Primary): Calculating routes using OSRM (Open Source Routing Machine) as the primary method.
+    \item Haversine (Fallback): Using the Haversine formula as a fallback when OSRM is unavailable.
+\end{enumerate}
+
+It also:
+\begin{itemize}
+    \item Caches routes for 5 minutes
+    \item Calculates distance, duration, and waypoints
+\end{itemize}
+
+\section{Vehicle Status Flow}
+Each vehicle changes status automatically:
+
+available → onRoute → working → available
+
+Description:
+\begin{itemize}
+    \item \textbf{Available:} The vehicle is idle and ready to receive a new assignment.
+    \item \textbf{OnRoute:} The vehicle is traveling to the assigned fault location.
+    \item \textbf{Working:} The vehicle has reached the location and is performing the assigned task.
+\end{itemize}
+
+After completing the work, the vehicle status is reset to available, making it ready for the next assignment.
+
+\section{System Workflow}
+
+\subsection{Initialization Workflow}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapter8/figs/8.2.png}
+    \caption{Initialization Workflow Auto Login, MQTT Connection, Vehicle Fetch and State Setup}
+    \label{fig:7.2}
+\end{figure}
+
+This explains the initialization workflow where the simulator automatically logs in, connects to MQTT (as discussed in Chapter 4), and prepares its internal state. APIClient.AutoLogin obtains an authentication token, MQTTPublisher connect establishes the MQTT connection, APIClient.GetVehicles fetches all vehicles, and the simulator initializes each vehicle’s state such as GPS position and status, using either backend GPS data or a default depot location.
+
+\subsection{Dispatch Detection Workflow}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapter8/figs/8.3.png}
+    \caption{The simulator periodically detects new dispatch work, validates each assignment, and calculates a route to put the selected vehicle on route.}
+    \label{fig:7.3}
+\end{figure}
+
+This represent how the simulator periodically detects new dispatch work and decides whether and how to accept and route each fault. Every 5 seconds, the simulator calls APIClient.GetDispatchedFaults, filters faults in pending confirmation or assigned status, matches them to its vehicles, skips already processed or invalid ones, validates coordinates, checks route cache, calculates a route via RoutingService.CalculateRoute (using OSRM with Haversine fallback), and then updates the backend vehicle status to onRoute when a valid route is obtained.
+
+\subsection{GPS Movement Workflow}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapter8/figs/8.4.png}
+    \caption{GPS Movement Workflow, Vehicle Position Update, Publishing and Arrival Check (Every 3 Seconds)}
+    \label{fig:7.4}
+\end{figure}
+
+In this workflow, the simulator moves each vehicle step by step along its planned route. The route is made of waypoints, and every 3 seconds the vehicle jumps from one waypoint to the next. At each step, the simulator sets the vehicle’s new latitude and longitude from the current waypoint and calculates its speed and direction, for example using speed of 40 km/h. It then sends this GPS data out in two ways: as a GPS message through MQTT (MQTTPublisher.publishGPS) (described in Chapter 4) and as a GPS update to the backend API (APIClient.sendGPS). After sending the GPS, the simulator checks whether the vehicle has reached the final waypoint of the route. If it has not reached the end, it moves the waypoint index forward so the vehicle continues moving on the next loop; if it has reached the last waypoint, this triggers the “arrival” logic instead of continuing movement.
+
+\subsection{Arrival and Work Completion Workflow}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapter8/figs/8.5.png}
+    \caption{Vehicle Arrival, Working State, Completion and Reset Workflow}
+    \label{fig:7.5}
+\end{figure}
+
+It focuses on what happens when the simulated vehicle arrives at the fault location, performs work, and then resets to an available state. When the waypoint index reaches the end of the route, HandleArrival is called, which updates the backend vehicle status to working (with retry), publishes the working status via MQTT, starts a random work timer between 5 and 15 minutes, then completeWork marks the job as resolved, sends a resolution message and available status via MQTT and API (using the same backend and MQTT flow described in Chapter 4), and finally clears the assigned fault and route to reset the simulator vehicle state.
+
+\subsection{Complete System Integration Flow}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{chapter8/figs/8.6.png}
+    \caption{System Integration Flow in which Simulator, Backend APIs and MQTT Working Together}
+    \label{fig:7.6}
+\end{figure}
+
+This shows the full system integration flow from dispatch to completion in one continuous process. The backend AI dispatch engine assigns a fault to a vehicle and exposes it through the REST API, which the vehicle simulator polls every few seconds to detect any new work. When a fault is assigned to one of its vehicles, the simulator calculates a route using OSRM or a Haversine fallback, updates the vehicle status to onRoute, and starts sending GPS updates every 3 seconds through MQTT and REST so the backend always knows the live position. As the simulated vehicle arrives at the fault location, the status changes to working, and once the job is finished the simulator marks the fault as resolved and resets the vehicle back to available, while the backend updates the fault record and stores the final resolution state. (as previously described in Chapter 4)
+
+\subsection{Dispatch Detection}
+\begin{itemize}
+    \item Simulator checks backend every 5 seconds
+    \item Finds assigned faults
+    \item Matches fault with vehicle
+    \item Calculates route
+    \item Updates status to onRoute
+\end{itemize}
+
+\subsection{Vehicle Movement}
+\begin{itemize}
+    \item Vehicle moves through route waypoints
+    \item GPS updates sent every 3 seconds
+    \item Speed and heading calculated
+    \item GPS sent via MQTT and API
+\end{itemize}
+
+\subsection{Arrival and Work}
+\begin{itemize}
+    \item Vehicle reaches destination
+    \item Status changes to working
+    \item Work time starts (5–15 minutes)
+    \item Vehicle stops moving
+\end{itemize}
+
+\subsection{Work Completion}
+\begin{itemize}
+    \item Work timer ends
+    \item Resolution message sent via MQTT
+    \item Vehicle status resets to available
+    \item Vehicle is ready for next task
+\end{itemize}
+
+\section{GPS Simulation}
+\begin{itemize}
+    \item GPS update interval: 3 seconds
+    \item Speed: 40 km/h (fixed)
+    \item Movement: Waypoint-based
+    \item Heading: Calculated using bearing formula
+\end{itemize}
+
+GPS Data Format:
+\begin{itemize}
+    \item Latitude
+    \item Longitude
+    \item Speed
+    \item Heading
+    \item Timestamp
+\end{itemize}
+
+\section{Configuration}
+Configuration is managed using environment variables.
+
+Key settings:
+\begin{itemize}
+    \item MQTT Credentials: Username, password, and broker address used to connect and publish/subscribe to MQTT topics for real-time vehicle updates.
+    \item GPS Update Interval: The time interval (in seconds) at which the simulator updates the vehicle’s GPS coordinates and sends them via MQTT and API.
+    \item Dispatch Polling Interval: The frequency (in seconds) at which the simulator polls the backend to check for newly assigned faults.
+    \item Vehicle Speed: The speed at which vehicles move along their route, typically in km/h, used to simulate realistic movement.
+    \item Work Duration: The time (in minutes) it takes for a vehicle to complete a fault once it arrives at the location; usually randomized within a range (e.g., 5–15 minutes).
+\end{itemize}
+
+All values have default settings for development.
+
+\section{Deployment}
+
+\subsection{Local Run}
+\begin{itemize}
+    \item Install dependencies
+    \item Configure .env file
+    \item Run simulator using Node.js
+\end{itemize}
+
+\subsection{Docker Support}
+\begin{itemize}
+    \item Dockerfile available
+    \item Can be added to docker compose
+    \item Automatically restarts if stopped
+\end{itemize}
+
+\section{How to Monitor the Simulator Console Output}
+Console Output:
+\begin{itemize}
+    \item The simulator prints detailed logs in the console using emoji indicators to show success, errors, warnings, retries, MQTT operations, and vehicle operation.
+\end{itemize}
+
+Checking Vehicle State:
+\begin{itemize}
+    \item The simulator stores all vehicle information in memory. You can see:
+    \item Vehicle location updates (logged every 10 waypoints)
+    \item Status changes
+    \item Work assignments
+    \item Route calculations
+\end{itemize}
+
+Monitoring MQTT Messages
+\begin{itemize}
+    \item Use an MQTT client (like MQTT Explorer) to:
+    \item Subscribe to vehicle/\{vehicle\_number\}/gps
+    \item Watch location updates in real-time
+    \item Monitor status changes
+    \item Verify completion messages
+\end{itemize}
+
+\section{Error Handling \& Troubleshooting}
+\begin{itemize}
+    \item Authentication Errors: Handles cases where login to the backend fails; ensures the simulator retries or prompts for credentials.
+    \item MQTT Connection Failures: Detects if the simulator cannot connect to the MQTT broker and attempts reconnection to maintain real-time updates.
+    \item Missing Vehicles: Identifies vehicles that are not available in the system and ensures they are skipped or logged without stopping the simulator.
+    \item Route Calculation Failure: Handles errors during route computation; uses fallback methods (e.g., Haversine distance) to continue simulation.
+\end{itemize}
+
+Fallback Systems Ensure:
+\begin{itemize}
+    \item The simulator continues running even if some errors occur.
+    \item Vehicles still move along routes and perform tasks despite failures in some components.
+\end{itemize}
+
+\section{Integration with Full System}
+
+\subsection{Backend Integration}
+The backend AI dispatch engine assigns faults to specific vehicles and then updates the vehicle and fault status accordingly.
+
+The simulator continuously polls the backend, detects assignments, and starts route calculation and vehicle movement towards the fault location.
+
+During the trip, the simulator sends regular GPS updates to the backend so the system always knows the latest vehicle position.
+
+When work is completed, the simulator publishes a resolution message and the backend marks the fault as resolved and frees the vehicle for new tasks.
+
+\subsection{Frontend Integration}
+The backend forwards GPS updates to the frontend via WebSocket (as discussed in the Frontend chapter) so the web application can receive them in real time.
+
+The frontend map uses these GPS messages to show live vehicle movement, including position, speed, and direction on the screen. (as discussed in the Frontend chapter)
+
+Whenever the simulator changes a vehicle’s status, the backend pushes an update and the frontend immediately reflects the new state (available, onRoute, working) for operators.
+
+\section{Performance}
+The vehicle simulator is a small and simple Node.js application that uses input/output operations primarily and as a result, the application consumes very little CPU and is mostly using moderate memory even when running continuously.
+
+The simulator can manage several vehicles at the same time, sending GPS and status updates for each one without heavy resource usage.
+
+The simulator becomes a choice for developers, testers, and demo environments that often run virtual vehicles but have limited hardware resources.
+
+\section{Future Enhancements}
+\begin{itemize}
+    \item WebSocket Integration: Real-time dispatch events instead of polling.
+    \item Multiple Simulators: Support for distributed simulation.
+    \item Route Optimization: Multi-vehicle route optimization.
+    \item Performance Metrics: Track simulation performance.
+    \item Traffic Simulation: Variable speeds based on traffic.
+\end{itemize}
+
+\section{Conclusion}
+The Vehicle Simulator is a highly practical and realistic software that takes the place of physical vehicle tracking hardware in a fleet management system.
+
+It mimics the motion of the vehicle on the routes and continuously provides GPS and status updates while automatically managing dispatch, arrival, and work done with the faults assigned to the personnel.
+
+Through close integration with the backend API, the MQTT broker, and the frontend map, the entire process of testing, demoing and developing can now take place without the use of real vehicles or GPS devices.
+

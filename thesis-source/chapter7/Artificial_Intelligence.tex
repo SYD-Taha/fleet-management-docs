@@ -1,0 +1,353 @@
+\begin{document}
+
+\maketitle
+
+\chapter{Artificial Intelligence in Fleet Tracking and Dispatching}
+
+\section{Introduction}
+Artificial Intelligence (AI) has quickly become one of the biggest technology in many areas of work. It is the heart of everything. In fleet management and utility services, AI is now a key tool for making quick decisions, working together in advance analytics and keeping operations strong and efficient. Older fleet systems mostly responded after problems happened and dispatchers(people) made choices using not much information mostly guesswork or fixed data which often led to delays and mistakes. But today, in utility work where time is very important during power outages, storm repairs and urgent services, these old ways are not enough anymore.
+
+The need for intelligent dispatching and decision-making arises from the limitations identified in Sections 1.2 and 1.3.2 of Chapter 1, including inefficient routing and lack of smart task allocation. This chapter looks at how AI helps improve the AI-Powered Real-Time Fleet Tracking and Dispatch System. It explains AI does not work alone and how it connects with different data sources like GPS devices, NFC tags, sensors, backend APIs and even outside data such as traffic and weather conditions and makes smart choices for sending out crews and sets up the system to grow and improve in the future. These suggestions appear on the main dashboard for easy use.
+
+\section{Role of AI in Fleet Management}
+AI plays an important role in our system i.e. fleet management in more ways than just keeping track of vehicles. Unlike in traditional fleet system, it helps make responses faster, ensures safety rules are followed and makes the process of fixing issues more efficient. In our system, the AI/ML Dispatch Engine is a machine learning microservice that helps choose the best vehicle for sending to a fault using a Random Forest regression model. Dispatch is important because in big power utility operations, there are many vehicles and crews at different places, each with different workloads, experience levels, and ability to respond quickly. For example, imagine a transformer fault happens in a residential area. Vehicle A is closest to the fault, but its crew has been working for a long time and isn't very experienced with transformer problems. Vehicle B is a bit farther away, but its crew is well-rested and has a good track record of fixing similar faults. When people manually assign vehicles, they often use their judgment or set rules, which might not always pick the best vehicle for the job.
+
+The Random Forest model looks at several factors to decide which vehicle is best. These include how far the vehicle is from the fault, how tired the crew is, how well they have handled similar issues before, how serious the fault is and their past experience. The model uses many decision trees to make predictions and gives each vehicle a score showing how suitable it is for the job. The vehicle with the highest score gets chosen. This approach helps respond faster and fix problems more reliably, which helps solve the issues with task allocation mentioned in Sections 1.2 and 1.3.2 of Chapter 1. It contributes in the following ways
+
+Key Features:
+\begin{itemize}
+    \item Machine Learning-Based Prediction: Uses Random Forest model to score vehicle candidates.
+    \item Automatic Fallback: Falls back to rule-based dispatch if ML service is unavailable.
+    \item RESTful API: FastAPI-based microservice with health checks and model management.
+    \item Batch Processing: Efficient batch feature extraction and prediction.
+    \item Model Training: On-demand model training via API or standalone script
+    \item Feature Engineering: 6 features extracted from vehicles and faults
+\end{itemize}
+
+A comparison of traditional fleet systems vs AI-enabled systems is presented in Table~\ref{tab:6.1}.
+
+\begin{table}[H]
+    \centering
+    \caption{Traditional vs AI-enabled Fleet Management}
+    \label{tab:6.1}
+    \vspace{0.3cm} % Add this line for spacing between caption and table
+    \begin{tabular}{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}}
+        \toprule
+        \textbf{Feature} & \textbf{Traditional System} & \textbf{AI-enabled System (Our System)} \\
+        \midrule
+        Dispatching Decision & Manual, experience-based & Automated, data-driven with weighted factors \\
+        Fault Response & Reactive & Predictive \& Proactive using historical + Live data \\
+        Route Planning & Static GPS based & Dynamic, AI-optimized in real-time \\
+        Safety Consideration & Limited & Integrated with compliance checks \\
+        Scalability & Low & High, supports multiple crews and vehicles \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:6.1}, there is a comparison between old ways of managing a fleet of vehicles and newer methods that use AI. The old ways depend a lot on people checking things manually and making decisions after problems happen, which can cause things to go wrong, take longer and cost more. On the other hand, AI-based methods use real-time information, predict future needs and automatically assign tasks to vehicles. This comparison shows how AI changes fleet management from just fixing problems when they occur to being able to plan and act smartly before issues happen.
+
+\section{Technology Stack}
+\begin{itemize}
+    \item Framework: FastAPI (Python)
+    \item ML Library: scikit-learn (RandomForestRegressor)
+    \item Data Processing: pandas, numpy
+    \item Model Persistence: joblib
+\end{itemize}
+
+\section{System Architecture}
+
+\subsection{High-Level Architecture}
+The AI/ML Dispatch Engine operates within the Data and Processing Layer described in Section 1.6 of Chapter 1, receiving inputs from the hardware layer via backend APIs. The AI/ML Dispatch Engine follows a microservice-based architecture as shown in figure 6.2. The backend dispatch controller communicates with a dedicated ML service implemented using FastAPI. The backend is responsible for feature extraction, while the ML service focuses solely on prediction and model management.
+
+At a high level, the dispatch workflow consists of the following steps and the software module connectivity shown in Figure no. 6.1):
+\begin{enumerate}
+    \item The backend identifies all available vehicles.
+    \item Relevant features are extracted for each vehicle-fault pair.
+    \item The ML service is invoked to predict dispatch scores.
+    \item The vehicle with the highest score is selected.
+    \item If the ML service fails, the system automatically falls back to rule-based dispatch.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter7/figs/7.1.png}
+    \caption{High Level Architecture of the AI/ML Dispatch Engine shows two-way synchronous REST communication between backend and ML dispatch service.}
+    \label{fig:6.1}
+\end{figure}
+
+\subsection{Component Architecture}
+The ML service is structured into clearly separated components to ensure maintainability and scalability (Figure~\ref{fig:6.2}):
+\begin{itemize}
+    \item FastAPI Application Layer: Handles incoming API requests and responses.
+    \item Model Layer: Manages model loading, caching and prediction logic.
+    \item Training Layer: Handles model training and retraining operations.
+    \item Schema Layer: Defines request and response validation using Pydantic.
+\end{itemize}
+
+The backend interacts with the ML service through RESTful APIs, making the system loosely coupled and deployment-friendly.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter7/figs/7.2.png}
+    \caption{Component Architecture of the AI/ML Dispatch Engine shows internal structure of the ML service, including API layer, model management and training components.}
+    \label{fig:6.2}
+\end{figure}
+
+\section{Model Design and Details}
+
+\subsection{Model Selection}
+The dispatch engine uses a RandomForestRegressor due to its robustness, ability to handle non-linear relationships and resistance to overfitting. Random Forest models are well-suited for structured tabular data and provide stable performance without extensive hyper parameter tuning.
+
+\subsection{Model Configuration}
+\begin{itemize}
+    \item Algorithm: RandomForestRegressor
+    \item Estimators (Number of Trees): 200
+    \item Output: Dispatch score on a scale of 0 - 100
+    \item Training Data: Synthetic data generated from rule-based scoring
+    \item Input(Model) Features: 6
+\end{itemize}
+
+\subsection{Model Features}
+The model evaluates each candidate vehicle using six carefully engineered features (Figure~\ref{fig:6.3}):
+\begin{enumerate}
+    \item Distance to Fault (distance\_m): The physical distance between the vehicle and the fault location, measured in meters. Shorter distances result in higher dispatch suitability.
+    \item Distance Category (distance\_cat): A categorical representation of distance to help the model learn distance-based patterns efficiently.
+    \item Historical Performance (past\_perf): A normalized score representing the vehicle’s past fault resolution success rate, scaled from 1 to 10.
+    \item Fault History (fault\_history): The number of similar faults previously resolved by the vehicle, representing experience.
+    \item Crew Fatigue (fatigue\_h): Estimated fatigue level in hours based on the number of faults handled during the day.
+    \item Fault Severity (fault\_severity): Encodes the priority level of the fault as low, medium or high.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter7/figs/7.3.png}
+    \caption{The decision-making process, Inputs such as distance etc are processed by the AI Dispatch Engine to generate the optimal crew assignment.}
+    \label{fig:6.3}
+\end{figure}
+
+A summary of factors and their role is shown in Table~\ref{tab:6.2}.
+
+\begin{table}[H]  % Changed [H] to [htbp] for better placement
+    \centering
+    \caption{Dispatching Factors, their Purpose, Example Use Case and Source in the System}
+    \label{tab:6.2}
+    \vspace{1em}  % Adds breathing space between caption and table (adjust 0.5em–1.5em as preferred)
+    \small  % Slightly reduces font size for better fit and readability
+    \begin{adjustbox}{max width=\textwidth}  % Ensures table scales/fits within margins if still wide
+        \begin{tabular}{>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{3.8cm}}
+            \toprule
+            \textbf{Feature} & \textbf{Purpose} & \textbf{Example Use Case} & \textbf{Source in Our System} \\
+            \midrule
+            Distance to Fault (distance\_m) & Minimize response time & Vehicle 1.2 km away is preferred over one 5 km away & GPS device → Backend API \\
+            Distance Category (distance\_cat) & Improve model learning efficiency & Fault categorized as Near, Medium or Far for faster prediction & Derived from GPS distance (Backend logic) \\
+            Historical Performance (past\_perf) & Ensure reliable fault resolution & Crew with performance score 8/10 chosen over lower-rated crew & Task \& resolution logs (MySQL database) \\
+            Fault History (fault\_history) & Leverage prior experience & Crew previously fixed transformer faults & Fault records \& service history (Database logs) \\
+            Crew Fatigue (fatigue\_h) & Balance workload \& safety & Crew working 9+ hours is deprioritized & NFC attendance + daily task logs \\
+            Fault Severity (fault\_severity) & Prioritize critical faults & High-severity fault near hospital handled first & Work order \& fault classification system \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+\end{table}
+
+These AI model features are derived from real-world operational data, such as distance, crew experience, workload and fault severity into numerical features to intelligently select and dispatch the most suitable crew in real time.
+
+\section{Feature Extraction and Engineering}
+Feature extraction is performed in the backend to minimize ML service complexity and reduce response latency. All features are calculated in batch to improve efficiency.
+
+\subsection{Distance Calculation (distance\_m, distance\_cat)}
+Distance is calculated using OSRM-based route estimation when available. If routing fails, the system falls back to the Haversine formula to ensure uninterrupted operation.
+
+\subsection{Performance and Fatigue Metrics (past\_perf, fault\_history, fatigue\_h)}
+Historical performance and fatigue levels are computed using batch database queries, significantly reducing system overhead. Performance values are normalized to match the ML model’s expected input range.
+
+\subsection{Fault Severity Mapping (fault\_severity)}
+Fault categories are mapped to numeric severity levels to enable direct use by the machine learning model.
+
+\section{Model Training Strategy}
+
+\subsection{Synthetic Data Generation}
+Due to the unavailability of sufficient historical dispatch data, the model is trained using synthetically generated data. Statistical distributions are used to simulate realistic operational conditions, including distance, performance, fatigue and fault severity.
+
+\subsection{Rule-Based Target Generation}
+Target dispatch scores are generated using an existing rule-based scoring mechanism. This allows the ML model to learn and approximate expert-defined decision logic.
+
+\subsection{Training and Evaluation}
+The dataset is split into training and testing sets using an 80:20 ratios.
+
+Model performance is evaluated using:
+\begin{itemize}
+    \item Mean Absolute Error (MAE): ~2-3 points (on 0-100 scale)
+    \item R² Score: ~0.98-0.99 (high accuracy)
+    \item Training Time: ~5-30 seconds (depending on n\_samples)
+\end{itemize}
+
+Experimental results show high accuracy, with MAE values around 2 - 3 points and R² scores close to 0.99.
+
+\section{API Design and Backend Integration}
+The ML service exposes RESTful APIs for health monitoring, prediction, model information and training. These APIs allow seamless integration with the backend dispatch controller.
+\begin{enumerate}
+    \item \textbf{Health Check} \\
+    \begin{itemize}
+        \item Endpoint: GET /api/health
+        \item Purpose: Check service health and model availability
+        \item Status Codes:
+        \begin{itemize}
+            \item 200: Service is healthy
+            \item 503: Service unhealthy or model not loaded
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Model Information} \\
+    \begin{itemize}
+        \item Endpoint: GET /api/model/info
+        \item Purpose: Get detailed model information
+        \item Status Codes:
+        \begin{itemize}
+            \item 200: Model info retrieved successfully
+            \item 500: Error retrieving model info
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Predict Best Vehicle} \\
+    \begin{itemize}
+        \item Endpoint: POST /api/predict
+        \item Purpose: Predict the best vehicle from candidate list
+        \item Status Codes:
+        \begin{itemize}
+            \item 200: Prediction successful
+            \item 400: Invalid request (missing features, invalid values)
+            \item 503: Model not available
+            \item 500: Prediction error
+        \end{itemize}
+        \item Validation Rules:
+        \begin{itemize}
+            \item distance\_m: >= 0
+            \item distance\_cat: 0, 1, or 2
+            \item past\_perf: 1.0 to 10.0
+            \item fault\_history: >= 0
+            \item fatigue\_h: 0.0 to 24.0
+            \item fault\_severity: 1, 2, or 3
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Train Model} \\
+    \begin{itemize}
+        \item Endpoint: POST /api/train
+        \item Purpose: Train or retrain the ML model
+        \item Status Codes:
+        \begin{itemize}
+            \item 200: Training completed successfully
+            \item 409: Training already in progress
+            \item 500: Training failed
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+Note: After training, the model is automatically reloaded.
+
+\subsection{Prediction Workflow}
+The backend sends a batch of candidate vehicle features to the ML service. The service validates inputs, predicts dispatch scores and returns the index of the best candidate along with detailed scores.
+
+\subsection{Backend Integration}
+The AI module receives real-time data from the hardware layer described in Chapter 1 through backend APIs, ensuring seamless integration between physical devices and intelligent decision-making components. The backend dynamically checks ML service availability. If the ML service responds successfully, the ML-based selection is used, otherwise, the system switches to rule-based dispatch without interrupting operations.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter7/figs/7.4.png}
+    \caption{Layered architecture diagram showing hardware → backend → AI engine → APIs → dashboard.}
+    \label{fig:6.4}
+\end{figure}
+
+Functions for Integration with Backend are:
+\begin{itemize}
+    \item isMLServiceAvailable(): Check if ML service is healthy and model is loaded
+    \item predictBestVehicle(candidates): Get prediction for vehicle candidates
+    \item getMLModelInfo(): Get model information
+    \item trainMLModel(options): Train/retrain model
+\end{itemize}
+
+This organized process ensures that hardware, software and AI parts work well together. It helps make quick, informed dispatching decisions that improve efficiency and the reliability of operations.
+
+\section{Testing and Validation}
+
+\subsection{Unit Testing}
+Individual ML service endpoints are tested using manual API calls and automated scripts to ensure correct functionality and validation handling.
+
+\subsection{Integration Testing}
+End-to-end tests are conducted from the backend to verify correct feature extraction, ML predictions and vehicle selection.
+
+\subsection{Performance Testing}
+Latency and throughput tests confirm that prediction requests typically complete within 100 ms, meeting real-time dispatch requirements.
+
+\section{Challenges and Troubleshooting in AI Deployment}
+Using AI/ML in our real-time fleet management system face various challenges. They are listed below
+\begin{itemize}
+    \item Model Not Found: Error: Model not available or Model file not found.
+    \item ML Service Unavailable: Error: Connection refused or timeout.
+    \item Invalid Feature Values: Error: Missing required features or Invalid candidate values.
+    \item Prediction Returns Invalid Index: Error: best Index out of bounds
+    \item Slow Predictions: Symptoms: High latency on prediction requests.
+\end{itemize}
+
+These challenges and their mitigation strategies are summarized in Figure~\ref{fig:6.6}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter7/figs/7.5.png}
+    \caption{AI Deployment Challenges and their Solutions}
+    \label{fig:6.6}
+\end{figure}
+
+\section{Limitations and Potential Extensions of AI (Future Scope)}
+While our current system demonstrates strong performance, it relies on synthetic training data. Future improvements include integrating real historical dispatch data, expanding feature sets, testing advanced ML models and implementing automated retraining pipelines.
+
+\subsection{Direct Extensions (Short-term Factors)}
+These factors are not added yet, but they can be included in future updates.
+
+\textbf{Model Improvements}
+\begin{itemize}
+    \item Real Training Data: Replace synthetic data with historical dispatch data
+    \item Feature Engineering: Add more features (weather, traffic, time of day)
+    \item Model Selection: Test other algorithms (XGBoost, Neural Networks)
+    \item Hyperparameter Tuning: Optimize RandomForest parameters
+    \item Online Learning: Incremental model updates from new data
+\end{itemize}
+
+\textbf{Service Improvements}
+\begin{itemize}
+    \item Model Versioning: Support multiple model versions
+    \item A/B Testing: Compare ML vs rule-based performance
+    \item Prediction Caching: Cache predictions for similar scenarios
+    \item Batch Predictions: Support multiple faults at once
+    \item Model Monitoring: Track prediction accuracy over time
+\end{itemize}
+
+\textbf{Integration Improvements}
+\begin{itemize}
+    \item Feature Store: Centralized feature management
+    \item Model Registry: Track model versions and performance
+    \item Automated Retraining: Schedule periodic model retraining
+    \item Performance Metrics: Dashboard for ML dispatch statistics
+\end{itemize}
+
+\subsection{Advanced Research-Oriented Extensions (Long-term Factors)}
+Future versions of the system can include more advanced AI features, such as:
+\begin{itemize}
+    \item Predictive and Maintenance Models: This will help to find problems with vehicles or equipment before they happen.
+    \item Federated Learning: This will helps improve AI models used by different utilities without actually sharing personal or raw data.
+    \item Computer Vision Integration: This uses cameras like CCTV to spot dangerous situations, unsafe actions or damaged things.
+    \item Dynamic Risk-aware Routing: Routes can change in real time to avoid floods, storms or dangerous areas.
+    \item Carbon and Environmental Optimization: This helps reduce emissions and use less fuel.
+    \item Adaptive Learning from Storm Events: After a storm, the AI learns from what happened to better prepare and respond next time.
+    \item Clustering Algorithms: It is used to look at how faults happen in different areas of the country and groups those faults geographically to help dispatchers use resources timely and efficiently.
+    \item Reinforcement Learning (RL): It helps in planning and selecting the best route dynamically by learning from traffic and weather updates.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter7/figs/7.6.png}
+    \caption{Potential future AI extensions for fleet tracking and dispatching.}
+    \label{fig:6.7}
+\end{figure}
+
+As shown in Figure~\ref{fig:6.7}, a mind map shows possible future uses of AI in fleet management. These include predictive maintenance, federated learning, using computer vision, creating routes that consider risks, reducing carbon impact and learning from storm events. These new ideas show where AI in fleet management might go next. They go beyond what the project is doing now and provide ways to grow and stay strong over time.
+
+\section{Summary}
+This chapter fulfills the intelligent decision-making objectives outlined in Section 1.9 of Chapter 1, completing the proposed AI-powered fleet management solution. It explained how AI is built into our system, not just as a regular tool but as the main part that makes decisions. Each part showed how AI changes information from GPS, NFC and traffic into real actions through the backend integration and frontend visuals. It also talked about the challenges and future plans, showing what has been done so far and what is next for growing the system.

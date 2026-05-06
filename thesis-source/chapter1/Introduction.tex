@@ -1,0 +1,247 @@
+\begin{document}
+
+\maketitle
+% \tableofcontent
+\chapter{Introduction}
+
+\section{Background}
+Power utilities rely heavily on efficient fleet operations to maintain uninterrupted electricity services. However, managing fleets across wide and complex service regions remains a major challenge due to limited real-time insights, inefficient dispatching, and a lack of optimized route planning.
+
+\section{Problem Statement}
+Power companies depend on quick field work to keep the electricity supply dependable. Having real-time tracking helps them see where their vehicles and workers are, which lets them send help faster, cut down on time lost, and boost the overall quality of their service. But making this work well in different areas is still tough. So, how can we best set up real-time tracking for a large number of vehicles and teams—making sure there are few problems, steady performance, and efficient operations?
+
+\subsection{The Core Problem}
+K-Electric and other power companies struggle with several issues when it comes to managing their vehicle fleets effectively.
+\begin{itemize}
+    \item \textbf{Limited Visibility:} Traditional systems don't have real-time location tracking, which means dispatching and monitoring have to be done after the fact instead of before.
+    \item \textbf{Inefficient Routing:} Poor route planning causes more fuel use, slower response times, and higher operating costs.
+    \item \textbf{Unmonitored Crew Performance:} The lack of real-time task tracking and driver behavior analytics makes it hard to improve performance.
+    \item \textbf{Operational Downtime:} Delays in getting the crew ready and working together lead to longer system outages when there's a power problem.
+    \item \textbf{Security Concerns:} Vehicles that run outside their scheduled times or beyond set boundaries are difficult to spot without geofencing alerts.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter1/figs/1.1.png}
+    \caption{Real-time fleet tracking and visibility for power utilities}
+    \label{fig:1.1}
+\end{figure}
+
+\section{Proposed Solution}
+
+\subsection{Project Goal}
+Create and put into use an AI-based real-time fleet tracking system for K-Electric that offers live vehicle monitoring, efficient task assignment, optimized routing and predictive analysis helping to improve response times, lower costs and boost service reliability.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter1/figs/1.2.png}
+    \caption{AI Fleet-Tracking and Visibility overview}
+    \label{fig:1.2}
+\end{figure}
+
+\subsection{Challenges in Traditional Fleet Management}
+\begin{itemize}
+    \item \textbf{Manual Monitoring:} Fleet status is usually monitored by hand or via systems that don't provide real-time updates.
+    \item \textbf{Ineffective Coordination:} Poor visibility makes it hard for fleet managers to communicate in real time with the crews on the ground.
+    \item \textbf{Lack of Smart Task Allocation:} Crews aren't assigned according to where they are, how available they are, or how urgent the situation is, which leads to delays in fixing power outages.
+    \item \textbf{Underutilization of Data:} Traditional systems don't use real-time data to improve routes or predict when equipment might need maintenance.
+    \item \textbf{No Instant Alerts:} Lack of automated alerts for unauthorized vehicle use or inefficiencies causes delayed response.
+\end{itemize}
+
+\subsection{Key Features of the Proposed System}
+\begin{itemize}
+    \item \textbf{Live GPS \& NFC-Based Tracking:} Allows for real-time tracking of both vehicle locations and the tasks being performed by personnel.
+    \item \textbf{AI-Based Route Optimization:} Uses genetic algorithms, reinforcement learning and clustering to suggest the most effective routes.
+    \item \textbf{Driver \& Crew Behavior Monitoring:} Monitors important factors such as idling time, delays and how well things go on-site to make sure work is done efficiently.
+    \item \textbf{Geofencing Alerts:} Sends immediate alerts when a vehicle moves without permission or goes off its planned route.
+    \item \textbf{Centralized Dashboard \& Reports:} Provides up-to-date analytics, live status tracking and detailed reports to help leaders make informed decisions.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter1/figs/1.3.png}
+    \caption{Real-time tracking system flow for power utilities}
+    \label{fig:1.3}
+\end{figure}
+
+This solution will make operations run more smoothly, lower expenses, boost safety, and help respond quicker to emergencies related to power.
+
+\section{Technical Details and Feasibility}
+
+\subsection{Technologies to Be Used}
+\begin{itemize}
+    \item \textbf{Cloud Infrastructure:} Centralized data storage, analytics, and remote access.
+    \item \textbf{GPS \& NFC Devices:} Installed in vehicles for accurate tracking and secure identification.
+    \item \textbf{Web Dashboard \& Mobile App:} User-friendly interfaces for live monitoring and control.
+    \item \textbf{AI Algorithms:} For route planning, predictive analytics and task optimization.
+\end{itemize}
+
+\subsection{Feasibility Considerations}
+\begin{itemize}
+    \item \textbf{Integration Support:} The system can either work with the current K-Electric systems like ERP or asset management tools, or it can be used on its own as a separate setup.
+    \item \textbf{Modular Architecture:} Enables a step-by-step implementation, starting with pilot testing and then slowly increasing the scale.
+    \item \textbf{Hardware Requirements:} (Table~\ref{tab:1.1}) shows the Hardware Requirements of the system.
+    \item \textbf{Software Requirements:} Web platform, backend server, mobile interface and AI modules.
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \caption{Hardware components with their description}
+    \label{tab:1.1}
+    \begin{tabular}{>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{3cm}}
+        \toprule
+        \textbf{Hardware Components} & \textbf{Description / Purpose} & \textbf{Estimated Quantity} \\
+        \midrule
+        GPS Tracking Devices & Installed on each vehicle to enable real-time location tracking. & One per vehicle \\
+        NFC Tags / Chips & Attached to tools or used for crew check-in/out and task validation. & Multiple per vehicle \\
+        NFC Readers & Installed in vehicles or carried by supervisors to scan NFC tags. & One per vehicle / team \\
+        Mobile Devices (Smartphones/Tablets) & Used by fleet supervisors and field crews to access the tracking app, receive tasks, and update status. & One per user \\
+        Vehicle Power Adapter / Battery Backup (if needed) & To power GPS/NFC devices where direct connection to vehicle battery is not feasible. & As required \\
+        SIM Cards / IoT Connectivity Modules & For cellular data communication with cloud services. & One per GPS device \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+A detailed feasibility study is included in Appendix-A.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter1/figs/1.4.png}
+    \caption{System workflow diagram}
+    \label{fig:1.4}
+\end{figure}
+
+\section{Estimated Impact and Scalability}
+
+\subsection{Real-World Impact}
+\begin{itemize}
+    \item \textbf{Reduced Downtime:} Reducing downtime by up to 15\% by making dispatch and coordination faster.
+    \item \textbf{Improved Response Time:} According to industry standards from the Aberdeen Group in 2015, our service response is 46\% quicker than average.
+    \item \textbf{Fuel \& Cost Savings:} Route optimization and predictive maintenance can cut fuel use by 10 to 15 percent and reduce vehicle downtime by 20 to 25 percent.
+    \item \textbf{Data Security:} End-to-end encryption, which uses TLS for communication and AES for storage, makes sure your data stays secure and private, and it follows the NIST and RFC standards.
+    \item \textbf{Improved Safety \& Compliance:} Driver behavior analytics help lower the number of accidents and make sure drivers follow company rules properly.
+    \item \textbf{Enhanced Customer Satisfaction:} Quickly resolving incidents boosts public confidence and enhances the quality of utility services.
+\end{itemize}
+
+\subsection{Scalability}
+\begin{itemize}
+    \item The system is built to be easily scalable, allowing K-Electric to add more vehicles and sectors as their business grows.
+    \item The cloud-based design lets the platform manage big amounts of data and many users at the same time without any drop in performance.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter1/figs/1.5.png}
+    \caption{Layered Architecture of a system}
+    \label{fig:1.5}
+\end{figure}
+
+\section{System Architecture (Overview)}
+The proposed system uses a Layered Architecture to make sure the components are modular, scalable, and can communicate efficiently with each other. In general terms, the architecture is organized into four distinct layers (Figure~\ref{fig:1.5}):
+
+\begin{enumerate}
+    \item \textbf{Hardware/Device Layer}
+    \begin{itemize}
+        \item Includes GPS (Neo-M8L), NFC readers, ESP32 microcontrollers, and SIM900A GSM modules.
+        \item These devices are used to gather real-time information about location, identification, and the current status.
+    \end{itemize}
+    \item \textbf{Communication Layer}
+    \begin{itemize}
+        \item Offers connection via GSM and Wi-Fi networks.
+        \item Guarantees safe data sending using APIs and encryption methods.
+    \end{itemize}
+    \item \textbf{Data and Processing Layer}
+    \begin{itemize}
+        \item Includes a main database (MongoDB) for storing information.
+        \item REST APIs manage the flow of data between devices and apps.
+        \item AI and analytics tools analyze the data to provide useful insights and forecasts.
+    \end{itemize}
+    \item \textbf{Application/Presentation Layer}
+    \begin{itemize}
+        \item Features a web interface for managers and operations teams to check how well the fleet is performing.
+        \item Has a mobile app for workers to see their routes, check in, and get updates as they happen.
+    \end{itemize}
+\end{enumerate}
+
+This layered design provides real-time visibility, dependable communication, and smart decision-making, which makes it ideal for power companies handling big fleets.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{chapter1/figs/1.6.png}
+%     \caption{Conceptual Architecture of the Proposed System}
+%     \label{fig:1.6}
+% \end{figure}
+
+\section{Proposed Budget}
+The estimated proposed budget can be seen in (Table~\ref{tab:1.2}):
+\begin{table}[H]
+    \centering
+    \caption{Estimated Proposed budget}
+    \label{tab:1.2}
+    \begin{tabular}{>{\raggedright\arraybackslash}p{8cm}>{\raggedright\arraybackslash}p{5cm}}
+        \toprule
+        \textbf{Item} & \textbf{Cost (in PKR)} \\
+        \midrule
+        Fleet Tracking Hardware (GPS, NFC Tags/Chips, NFC Readers) & Rs 10k - 15k \\
+        Software Development (AI algorithms, mobile/web apps) & Rs 300k \\
+        Integration with Existing Systems & Rs 150k \\
+        Cloud Storage and Computing (Annual Subscription) & Rs 100k/year \\
+        Deployment and Training & Rs 80k \\
+        Ongoing Maintenance and Support & Rs 60k/year \\
+        Contingency Fund & Rs 50k \\
+        Total Estimated Budget & Rs 760k \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+*Estimated costs are just a guide and might change a little depending on how things are set up and current market prices.
+
+\section{Timeline for Implementation}
+The estimated Timeline for implementation can be seen in (Table~\ref{tab:1.3}):
+
+\begin{table}[htbp]  % Changed [H] to [htbp] for better placement flexibility (avoid forcing if issues)
+    \centering
+    \caption{Timeline for Implementation}
+    \label{tab:1.3}
+    \small  % Slightly reduce font size to help fitting without distortion
+    \begin{tabular}{>{\raggedright\arraybackslash}p{4.5cm} *{8}{c}}  % Adjusted first column slightly narrower
+        \toprule
+        \textbf{Phase} & \textbf{M1} & \textbf{M2} & \textbf{M3} & \textbf{M4} & \textbf{M5} & \textbf{M6} & \textbf{M7} & \textbf{M8} \\
+        \midrule
+        Requirement Gathering         & X &   &   &   &   &   &   &   \\
+        Pilot Deployment (20\%)       &   &   & X & X &   &   &   &   \\
+        Evaluation \& Feedback        &   &   &   & X &   &   &   &   \\
+        Full Deployment               &   &   &   &   & X & X &   &   \\
+        Training                      &   &   &   &   &   &   & X &   \\
+        Support \& Monitoring         &   &   &   &   &   &   &   & X \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Conclusion}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter1/figs/1.7.png}
+    \caption{How overall system works}
+    \label{fig:1.6b}
+\end{figure}
+
+The proposed Real-Time Fleet Tracking System (Figure~\ref{fig:1.6b}):
+is a key move in modernizing K-Electric's field operations. It uses GPS, NFC, and AI analytics to provide real-time tracking, improve how crews work together, boost fuel and route efficiency, and speed up responses to service issues. The system has a scalable design, strong security features, and clear results, which fit well with K-Electric's goal of offering reliable, data-backed, and quick utility services.
+
+This plan is built to be simple, easy to scale, and quick to set up without needing big changes to existing infrastructure—making it a solid option for fast implementation.
+
+\noindent\textit{For complete project resources including source code, documentation, GitHub repositories, and team contact information, please refer to Appendix~\ref{app:project-resources}.}
+
+% \section{Dataset and Expected Attributes}
+% To help with AI-based analytics, the system will create and use real-time data sets from GPS, NFC, and user interactions. The main data features include:
+% \begin{itemize}
+%     \item Vehicle ID, GPS Coordinates, and Timestamps
+%     \item Task Status, Team Member IDs (via NFC), and Route History
+%     \item Idle Time, Speed, and Fuel Consumption
+% \end{itemize}
+
+% These features will help make quick decisions and provide information for AI tools that work on optimizing routes, analyzing performance, and predicting equipment issues. The knowledge gained from this will lead to quicker responses, better efficiency in operations, and smarter management of resources based on data.
+

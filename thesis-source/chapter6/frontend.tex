@@ -1,0 +1,208 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+\onehalfspacing
+
+\title{Chapter 4: Front-End Design and Implementation}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Front-End Design and Implementation}
+
+\section{Introduction}
+This chapter presents a comprehensive overview of the front-end design and implementation of the AI-Powered Real-Time Fleet Tracking and Dispatch System. The front-end is critical in transforming real-time data into a user-friendly interface, empowering fleet managers, operators, and administrators to monitor and control fleet activities effectively. Built using React.js with Tailwind CSS, the front-end system ensures responsive, scalable, and maintainable components. It integrates with various services, including OpenStreetMap, WebSockets for real-time data synchronization, and Context API for state management, thereby enabling seamless and continuous fleet tracking.
+
+\section{Front-End Components Overview}
+The front-end architecture is designed to provide an interactive and intuitive user experience. Each module plays a key role in the functionality of the system, ensuring the efficient handling of real-time data and a streamlined interface for various users.
+
+\subsection{Technology Stack and Component Breakdown}
+The front-end utilizes a modular architecture, allowing for the independent development of features while ensuring easy integration with the back-end. Table~\ref{tab:4.1} below highlights the main components, the technologies used, and their respective functionalities:
+
+\begin{table}[H]
+    \centering
+    \caption{Key Front-End Components, Technologies, and Functionalities}
+    \label{tab:4.1}
+    \setlength{\tabcolsep}{4pt} % Reduce space between columns
+    \small % Smaller font size
+    \begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{5.5cm}}
+        \toprule
+        \textbf{Component} & \textbf{Technology/Framework} & \textbf{Functionality} \\
+        \midrule
+        Dashboard Interface & React.js + Tailwind CSS & Provides the primary control panel and visualization area for real-time fleet tracking and management. \\
+        Map Module & OpenStreetMap + MapLibre GL & Displays real-time vehicle locations and route paths on a dynamic map interface, allowing users to interact with geographical data. \\
+        Authentication UI & React Forms + JWT & Manages secure login and role-based access control, ensuring that users access the system based on their role and credentials. \\
+        Notification System & WebSockets & Pushes real-time alerts, such as vehicle status updates, fault status updates and route deviations, to users. \\
+        State Management & Context API & Ensures consistency of data across all front-end components, facilitating smooth updates and communication between various system modules. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.1.png}
+    \caption{Structural Overview of Front-End Components}
+    \label{fig:4.1}
+\end{figure}
+
+Figure~\ref{fig:4.1} provides a visual representation of the core front-end components. It illustrates the interconnections between the dashboard, map module, authentication system, notification system, and state management. This diagram clarifies how each component interacts to deliver a cohesive user experience, while also integrating with the back-end system.
+
+\subsection{Functional Overview}
+\begin{itemize}
+    \item \textbf{Dashboard Interface:} The dashboard serves as the control hub for fleet managers, displaying real-time data such as fleet status and alerts. Through React.js and Tailwind CSS, the interface is designed to be responsive, ensuring usability across multiple devices.
+    \item \textbf{Map Module:} The map module, now integrated with OpenStreetMap, enables real-time visualization of vehicle positions. The use of MapLibre GL enhances the rendering of map data, offering a smooth and interactive user experience.
+    \item \textbf{Authentication UI:} The authentication interface leverages React Forms for secure login and role-based access control. Users can authenticate through JWT tokens, ensuring secure access to the system.
+    \item \textbf{Notification System:} Real-time notifications, powered by WebSockets, alert users of critical events, fault arrivals and resolutions promoting timely decision-making.
+    \item \textbf{State Management:} Context API manage global state, ensuring that updates (e.g., vehicle status, location changes) are reflected consistently across the entire front-end system.
+\end{itemize}
+
+\section{Core Functionalities}
+
+\subsection{Dashboard Interface}
+The dashboard interface is the primary feature of the front-end system, providing fleet managers and operators with a unified view of fleet operations. The interface includes several key elements:
+\begin{itemize}
+    \item Day/night mode toggle (localStorage persistence)
+    \item Fleet sidebar (collapsible)
+    \item Map area with interactive map
+    \item Dispatch sidebar (collapsible)
+    \item Real-time data synchronization
+    \item Vehicle and fault state management
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.2.png}
+    \caption{Dashboard Interface Layout}
+    \label{fig:4.2}
+\end{figure}
+
+Figure~\ref{fig:4.2} presents the layout of the dashboard interface, showing the arrangement of map component, the fleet overview panel, and the sidebar for fault overview. The design prioritizes ease of use, with intuitive controls and seamless navigation between different sections of the system.
+
+The dashboard’s responsiveness ensures that users can monitor fleet operations from any device, improving operational efficiency and decision-making.
+
+\subsection{Map Integration Module}
+The map integration module is a cornerstone of the system, offering a spatial and visual representation of fleet assets in real-time. The system uses OpenStreetMap (via MapLibre GL) for map rendering. Key functionalities include:
+\begin{itemize}
+    \item \textbf{Real-time Vehicle Tracking:} Each vehicle is represented by a marker, color-coded based on its status (e.g., green for Available, blue for Dispatched/on route, orange for working and yellow for offline).
+    \item \textbf{Marker Clustering:} At higher zoom levels, nearby vehicles are clustered to reduce clutter, ensuring the map remains readable and interactive.
+    \item \textbf{User Interactions:} Users can click on vehicle markers to view detailed information, such as speed, vehicle name/id, and the vehicle's assigned fault along with some other details.
+\end{itemize}
+
+The map is constantly updated with real-time GPS data, ensuring that users can track vehicles and adjust their operations as necessary.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.3.png}
+    \caption{Map Integration Module Workflow}
+    \label{fig:4.3}
+\end{figure}
+
+Figure~\ref{fig:4.3} illustrates the data flow in the map integration module. The GPS data from vehicles is transmitted via WebSockets, processed by the back-end, and then displayed on the map through dynamically rendered markers. The figure shows how the data is received, processed, and visualized, ensuring a smooth and efficient user experience.
+
+\subsection{Authentication UI}
+The authentication UI ensures that only authorized users can access the system, with role-based permissions enforced through JWT. The module includes:
+\begin{itemize}
+    \item \textbf{Login Screen:} Provides input fields for username and password, with validation to ensure secure access.
+    \item \textbf{Role-Based Access Control:} Ensures that users are granted access to only the features relevant to their roles (e.g., managers, drivers).
+    \item \textbf{Secure Session Handling:} Uses JWT tokens to manage sessions, ensuring that users remain authenticated without needing to log in repeatedly.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.4.png}
+    \caption{Authentication System}
+    \label{fig:4.4}
+\end{figure}
+
+Figure~\ref{fig:4.4} presents the authentication process, showing how user credentials are validated, the JWT token is generated, and access is granted based on roles.
+
+\subsection{Notification System}
+The notification system is designed to provide real-time alerts based on events such as fault alerts and vehicle updates. The system uses WebSockets to push updates from the back-end to the front-end. The notifications are:
+\begin{itemize}
+    \item \textbf{Real-time:} Ensuring that fleet managers are instantly informed about critical issues.
+    \item \textbf{Categorized:} Alerts are classified by severity (e.g., critical, warning, info), allowing managers to prioritize actions effectively.
+    \item \textbf{Actionable:} Managers can interact with notifications to trigger corrective actions, such as dispatching a vehicle to resolve an issue.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.5.png}
+    \caption{Notification Flow}
+    \label{fig:4.5}
+\end{figure}
+
+Figure~\ref{fig:4.5} shows the workflow of the notification system, from event generation at the back-end to the real-time updates pushed to the front-end. The figure illustrates how WebSockets and Redux manage the state of notifications, ensuring they are promptly delivered to the user.
+
+\section{Front-End Architecture}
+The front-end follows a component-based architecture built with React.js. The architecture ensures modularity, scalability, and maintainability, with each component focusing on a specific functionality of the system. The front-end consists of three primary layers:
+\begin{enumerate}
+    \item \textbf{Presentation Layer:} Handles the user-facing components (dashboard, charts, authentication, map).
+    \item \textbf{State Management Layer:} Manages the global state using Context API, ensuring synchronization across all components.
+    \item \textbf{Integration Layer:} Interfaces with external services (REST APIs, WebSockets, mapping APIs) to fetch and update data in real-time.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.6.png}
+    \caption{Front-End Architecture Overview}
+    \label{fig:4.6}
+\end{figure}
+
+Figure~\ref{fig:4.6} shows the system-level architecture, highlighting the interaction between the front-end and back-end, with clear demarcation of the presentation, state management, and integration layers. It also demonstrates the flow of data from external sources (such as GPS and NFC) to the front-end for visualization.
+
+\section{Data Flow and State Management}
+Data synchronization is essential for real-time updates in the fleet tracking system. The front-end system is designed to handle both asynchronous WebSocket streams and synchronous API requests.
+\begin{enumerate}
+    \item \textbf{Input:} The system receives real-time data from GPS and NFC hardware.
+    \item \textbf{Processing:} Data is processed by the back-end and transmitted to the front-end through WebSockets.
+    \item \textbf{Output:} The front-end system updates components such as the dashboard and map to reflect the latest fleet status.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.7.png}
+    \caption{Data Flow with state Management and Mapping API}
+    \label{fig:4.7}
+\end{figure}
+
+Figure~\ref{fig:4.7} illustrates the interaction between the state management layer (using Redux) and the mapping API. It shows how GPS data flows from the back-end to the map and dashboard components, with real-time updates reflected across all user interfaces.
+
+\section{Challenges and Troubleshooting}
+Several challenges were encountered during the development phase:
+\begin{itemize}
+    \item \textbf{Real-Time Data Conflicts:} Conflicting data updates were managed using Context API to ensure the integrity of real-time data.
+    \item \textbf{Performance Bottlenecks:} Rendering large numbers of map markers led to performance degradation. This was resolved using marker clustering and lazy loading techniques.
+    \item \textbf{Cross-Browser Compatibility:} Extensive testing was carried out across different browsers (Chrome, Firefox, Edge) to ensure consistent functionality.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{chapter6/figs/6.8.png}
+    \caption{Challenges and Troubleshooting}
+    \label{fig:4.8}
+\end{figure}
+
+Figure~\ref{fig:4.8} compares system performance before and after the implementation of optimization strategies. It highlights the improvements in latency and responsiveness post-optimization.
+
+\section{Summary}
+In this chapter, we outlined the design and implementation of the front-end of the AI-Powered Real-Time Fleet Tracking and Dispatch System. The front-end components, including the dashboard, map integration, authentication system, and notification mechanisms, were developed using React.js, Tailwind CSS, and WebSockets for real-time communication. The system's architecture emphasizes modularity, scalability, and performance optimization to deliver a robust and responsive user experience.
+

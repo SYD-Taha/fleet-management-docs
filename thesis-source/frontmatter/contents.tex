@@ -1,0 +1,57 @@
+% To help hyperref to jump to the correct page
+\phantomsection
+\addcontentsline{toc}{section}{Table of Contents}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\Huge}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+% Change the heading of the List of Figures, center it, and make it bold
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\cftloftitlefont}{\hfill\bfseries\Huge}
+\renewcommand{\cftafterloftitle}{\hfill}
+
+% Change the heading of the List of Tables, center it, and make it bold
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand{\cftlottitlefont}{\hfill\bfseries\Huge}
+\renewcommand{\cftafterlottitle}{\hfill}
+\tableofcontents
+
+\renewcommand{\cftpartfont}{\normalfont\bfseries} % \part font in ToC
+\renewcommand{\cftchapfont}{\normalfont\bfseries} % \chapter font in ToC
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftpartpagefont}{\normalfont}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% \setcounter{tocdepth}{4}
+% \setcounter{secnumdepth}{4}
+
+\cftsetindents{chapter}{0in}{0.25in}
+\cftsetindents{section}{0.25in}{0.35in}
+\cftsetindents{subsection}{.6in}{0.5in}
+\cftsetindents{subsubsection}{1.5in}{0.5in}
+
+\setlength{\cftbeforepartskip}{.25em}
+\setlength{\cftbeforechapskip}{.25em}
+\setlength{\cftbeforesecskip}{-.5em}
+\setlength{\cftbeforesubsecskip}{-.5em}
+
+%\addtocontents{toc}{~\hfill\textbf{Page}\par}
+
+\thispagestyle{plain}
+
+\clearpage
+  % Make the list of figures
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+
+\thispagestyle{plain}
+\clearpage
+
+ % Make the list of tables
+ \addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+\thispagestyle{plain}
+\clearpage
+ 
