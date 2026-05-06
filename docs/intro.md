@@ -28,7 +28,7 @@ K-Electric and other power companies struggle with several issues when it comes 
 - **Security Concerns:** Vehicles that run outside their scheduled times or beyond set boundaries are difficult to spot without geofencing alerts.
 
 <figure id="fig:1.1" data-latex-placement="H">
-<img src="/img/intro/1.1.png" style={{width:'80%'}} />
+<img src="/fleet-management-docs/img/intro/1.1.png" style={{width:'80%'}} />
 <figcaption>Real-time fleet tracking and visibility for power utilities</figcaption>
 </figure>
 
@@ -39,7 +39,7 @@ K-Electric and other power companies struggle with several issues when it comes 
 Create and put into use an AI-based real-time fleet tracking system for K-Electric that offers live vehicle monitoring, efficient task assignment, optimized routing and predictive analysis helping to improve response times, lower costs and boost service reliability.
 
 <figure id="fig:1.2" data-latex-placement="H">
-<img src="/img/intro/1.2.png" style={{width:'80%'}} />
+<img src="/fleet-management-docs/img/intro/1.2.png" style={{width:'80%'}} />
 <figcaption>AI Fleet-Tracking and Visibility overview</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ Create and put into use an AI-based real-time fleet tracking system for K-Electr
 - **Centralized Dashboard & Reports:** Provides up-to-date analytics, live status tracking and detailed reports to help leaders make informed decisions.
 
 <figure id="fig:1.3" data-latex-placement="H">
-<img src="/img/intro/1.3.png" style={{width:'80%'}} />
+<img src="/fleet-management-docs/img/intro/1.3.png" style={{width:'80%'}} />
 <figcaption>Real-time tracking system flow for power utilities</figcaption>
 </figure>
 
@@ -114,7 +114,7 @@ Hardware components with their description
 A detailed feasibility study is included in Appendix-A.
 
 <figure id="fig:1.4" data-latex-placement="H">
-<img src="/img/intro/1.4.png" style={{width:'80%'}} />
+<img src="/fleet-management-docs/img/intro/1.4.png" style={{width:'80%'}} />
 <figcaption>System workflow diagram</figcaption>
 </figure>
 
@@ -141,7 +141,7 @@ A detailed feasibility study is included in Appendix-A.
 - The cloud-based design lets the platform manage big amounts of data and many users at the same time without any drop in performance.
 
 <figure id="fig:1.5" data-latex-placement="H">
-<img src="/img/intro/1.5.png" style={{width:'80%'}} />
+<img src="/fleet-management-docs/img/intro/1.5.png" style={{width:'80%'}} />
 <figcaption>Layered Architecture of a system</figcaption>
 </figure>
 
@@ -222,7 +222,7 @@ Timeline for Implementation
 ## Conclusion
 
 <figure id="fig:1.6b" data-latex-placement="H">
-<img src="/img/intro/1.7.png" style={{width:'80%'}} />
+<img src="/fleet-management-docs/img/intro/1.7.png" style={{width:'80%'}} />
 <figcaption>How overall system works</figcaption>
 </figure>
 

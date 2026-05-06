@@ -79,7 +79,7 @@ At a high level, the dispatch workflow consists of the following steps and the s
 5.  If the ML service fails, the system automatically falls back to rule-based dispatch.
 
 <figure id="fig:6.1" data-latex-placement="H">
-<img src="/img/ai/7.1.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/ai/7.1.png" style={{width:"80.0%"}} />
 <figcaption>High Level Architecture of the AI/ML Dispatch Engine shows two-way synchronous REST communication between backend and ML dispatch service.</figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ The ML service is structured into clearly separated components to ensure maintai
 The backend interacts with the ML service through RESTful APIs, making the system loosely coupled and deployment-friendly.
 
 <figure id="fig:6.2" data-latex-placement="H">
-<img src="/img/ai/7.2.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/ai/7.2.png" style={{width:"80.0%"}} />
 <figcaption>Component Architecture of the AI/ML Dispatch Engine shows internal structure of the ML service, including API layer, model management and training components.</figcaption>
 </figure>
 
@@ -137,7 +137,7 @@ The model evaluates each candidate vehicle using six carefully engineered featur
 6.  Fault Severity (fault_severity): Encodes the priority level of the fault as low, medium or high.
 
 <figure id="fig:6.3" data-latex-placement="H">
-<img src="/img/ai/7.3.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/ai/7.3.png" style={{width:"80.0%"}} />
 <figcaption>The decision-making process, Inputs such as distance etc are processed by the AI Dispatch Engine to generate the optimal crew assignment.</figcaption>
 </figure>
 
@@ -289,7 +289,7 @@ The backend sends a batch of candidate vehicle features to the ML service. The s
 The AI module receives real-time data from the hardware layer described in Chapter 1 through backend APIs, ensuring seamless integration between physical devices and intelligent decision-making components. The backend dynamically checks ML service availability. If the ML service responds successfully, the ML-based selection is used, otherwise, the system switches to rule-based dispatch without interrupting operations.
 
 <figure id="fig:6.4" data-latex-placement="H">
-<img src="/img/ai/7.4.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/ai/7.4.png" style={{width:"80.0%"}} />
 <figcaption>Layered architecture diagram showing hardware → backend → AI engine → APIs → dashboard.</figcaption>
 </figure>
 
@@ -336,7 +336,7 @@ Using AI/ML in our real-time fleet management system face various challenges. Th
 These challenges and their mitigation strategies are summarized in Figure <a href="#fig:6.6" data-reference-type="ref" data-reference="fig:6.6">1.5</a>.
 
 <figure id="fig:6.6" data-latex-placement="H">
-<img src="/img/ai/7.5.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/ai/7.5.png" style={{width:"80.0%"}} />
 <figcaption>AI Deployment Challenges and their Solutions</figcaption>
 </figure>
 
@@ -403,7 +403,7 @@ Future versions of the system can include more advanced AI features, such as:
 - Reinforcement Learning (RL): It helps in planning and selecting the best route dynamically by learning from traffic and weather updates.
 
 <figure id="fig:6.7" data-latex-placement="H">
-<img src="/img/ai/7.6.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/ai/7.6.png" style={{width:"80.0%"}} />
 <figcaption>Potential future AI extensions for fleet tracking and dispatching.</figcaption>
 </figure>
 

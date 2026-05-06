@@ -135,7 +135,7 @@ ESP32-S3 Microcontroller Pin Configuration
 </div>
 
 <figure id="fig:esp32_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c1.png" />
+<img src="/fleet-management-docs/img/appendix/c1.png" />
 <figcaption>ESP32-S3 full logical pinout</figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ PN532 NFC Reader Pin Configuration
 </div>
 
 <figure id="fig:pn532_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c2.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c2.png" style={{width:"80.0%"}} />
 <figcaption>PN532 NFC Reader full logical pinout</figcaption>
 </figure>
 
@@ -200,7 +200,7 @@ SIM900A GSM Module Pin Configuration
 </div>
 
 <figure id="fig:sim900a_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c3.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c3.png" style={{width:"80.0%"}} />
 <figcaption>SIM900A GSM Module full logical pinout</figcaption>
 </figure>
 
@@ -234,7 +234,7 @@ NEO M8L GPS Module Pin Configuration
 </div>
 
 <figure id="fig:neo_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c4.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c4.png" style={{width:"80.0%"}} />
 <figcaption>NEO M8L GPS Module full logical pinout</figcaption>
 </figure>
 
@@ -266,7 +266,7 @@ Micro SD Card Module Pin Configuration
 </div>
 
 <figure id="fig:sd_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c5.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c5.png" style={{width:"80.0%"}} />
 <figcaption>Micro SD Card Module (a) and (b) full logical pinout</figcaption>
 </figure>
 
@@ -300,7 +300,7 @@ Micro SD Card Module Pin Configuration
 </div>
 
 <figure id="fig:lcd_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c6.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c6.png" style={{width:"80.0%"}} />
 <figcaption>2.8" TFT LCD Display full logical pinout</figcaption>
 </figure>
 
@@ -315,7 +315,7 @@ Micro SD Card Module Pin Configuration
 - Max Current: 800mA (per regulator)
 
 <figure id="fig:power_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c7.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c7.png" style={{width:"80.0%"}} />
 <figcaption>Power supply and Regulator Circuit full logical pinout Diagram</figcaption>
 </figure>
 
@@ -340,14 +340,14 @@ Micro SD Card Module Pin Configuration
 - Dimensions: Approx. 43 mm × 21 mm × 14 mm
 
 <figure id="fig:xl6009_pinout" data-latex-placement="htbp">
-<img src="/img/appendix/c8.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/c8.png" style={{width:"80.0%"}} />
 <figcaption>XL6009 Buck Converter full logical pinout Diagram</figcaption>
 </figure>
 
 ## Sir Freed Alvi’s Review on Circuit Diagram
 
 <figure id="fig:Sir Freed Alvi&#39;s Review on Circuit Diagram" data-latex-placement="htbp">
-<img src="/img/appendix/sir fareed&#39; review.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/appendix/sir fareed&#39; review.png" style={{width:"80.0%"}} />
 <figcaption>Sir Freed Alvi’s Review on Circuit Diagram</figcaption>
 </figure>
 
@@ -917,27 +917,27 @@ void loop() {
 This appendix includes scanned copies/receipts (pay slips) of the purchases for the key hardware components used in the project prototype. These documents verify the acquisition and associated costs of the components.
 
 <figure id="fig:receipt1" data-latex-placement="htbp">
-<img src="/img/appendix/E1.jpg" style={{width:"90.0%"}} />
+<img src="/fleet-management-docs/img/appendix/E1.jpg" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 1 (e.g., ESP32-S3 or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt2" data-latex-placement="htbp">
-<img src="/img/appendix/E2.png" style={{width:"90.0%"}} />
+<img src="/fleet-management-docs/img/appendix/E2.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 2 (e.g., PN532 NFC Reader or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt3" data-latex-placement="htbp">
-<img src="/img/appendix/E3.png" style={{width:"90.0%"}} />
+<img src="/fleet-management-docs/img/appendix/E3.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 3 (e.g., SIM900A GSM Module or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt4" data-latex-placement="htbp">
-<img src="/img/appendix/E4.png" style={{width:"90.0%"}} />
+<img src="/fleet-management-docs/img/appendix/E4.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 4 (e.g., NEO M8L GPS Module or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt5" data-latex-placement="htbp">
-<img src="/img/appendix/E5.png" style={{width:"90.0%"}} />
+<img src="/fleet-management-docs/img/appendix/E5.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 5 (e.g., Additional components such as TFT LCD, SD Card Module, or power supplies)</figcaption>
 </figure>
 

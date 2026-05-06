@@ -25,7 +25,7 @@ The hardware components used in this project are listed in (Table  <a href="#ta
 The ESP32-S3 is the main controller in the system. It connects all the hardware parts and handles the main processing. It works like the brain by getting authentication information from the NFC reader, location details from the GPS and then controls communication with both the GSM module, which sends updates to the cloud or server and the local display, which is the LCD screen (Figure  <a href="#fig:3.1" data-reference-type="ref" data-reference="fig:3.1">1.1</a>):
 
 <figure id="fig:3.1" data-latex-placement="H">
-<img src="/img/hardware/4.1.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.1.png" style={{width:"80.0%"}} />
 <figcaption>ESP32-S3</figcaption>
 </figure>
 
@@ -36,7 +36,7 @@ When a crew member scans their NFC card for confirmation, the ESP32 checks and r
 PN532 is an NFC module that enables authentication using RFID or NFC tags. Every worker or driver has an NFC-enabled ID card that uniquely identifies them (Figure  <a href="#fig:3.2" data-reference-type="ref" data-reference="fig:3.2">1.2</a>):
 
 <figure id="fig:3.2" data-latex-placement="H">
-<img src="/img/hardware/4.2.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.2.png" style={{width:"80.0%"}} />
 <figcaption>PN532 NFC Reader</figcaption>
 </figure>
 
@@ -47,7 +47,7 @@ The NFC-based authentication mechanism supports the crew identification and task
 The SIM900A GSM module supports GPRS and SMS and offers cellular connection to communicate with the backend server or control center for sending updates (Figure  <a href="#fig:3.3" data-reference-type="ref" data-reference="fig:3.3">1.3</a>):
 
 <figure id="fig:3.3" data-latex-placement="H">
-<img src="/img/hardware/4.3.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.3.png" style={{width:"80.0%"}} />
 <figcaption>SIM900A GSM Module</figcaption>
 </figure>
 
@@ -58,7 +58,7 @@ The SIM900A GSM module fulfills the communication requirements defined in the Co
 The Neo-M8L GPS module gives real-time information about the vehicle’s location and speed (Figure  <a href="#fig:3.4" data-reference-type="ref" data-reference="fig:3.4">1.4</a>):
 
 <figure id="fig:3.4" data-latex-placement="H">
-<img src="/img/hardware/4.4.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.4.png" style={{width:"80.0%"}} />
 <figcaption>NEO M8L GPS Module</figcaption>
 </figure>
 
@@ -69,7 +69,7 @@ The Neo-M8L GPS module implements the live vehicle tracking functionality propos
 The SD card module allows for local data logging. It also offers backup by storing attendance and GPS data on the card itself (Figure  <a href="#fig:3.5" data-reference-type="ref" data-reference="fig:3.5">1.5</a>):
 
 <figure id="fig:3.5" data-latex-placement="H">
-<img src="/img/hardware/4.5.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.5.png" style={{width:"80.0%"}} />
 <figcaption>Micro SD Card Module</figcaption>
 </figure>
 
@@ -80,7 +80,7 @@ It keeps track of all acknowledgments and location data on the device’s intern
 The TFT LCD serves as the user interface, showing the system’s status in real time (Figure  <a href="#fig:3.6" data-reference-type="ref" data-reference="fig:3.6">1.6</a>):
 
 <figure id="fig:3.6" data-latex-placement="H">
-<img src="/img/hardware/4.6.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.6.png" style={{width:"80.0%"}} />
 <figcaption>2.8" TFT LCD Display</figcaption>
 </figure>
 
@@ -91,7 +91,7 @@ It shows crew authentication, GPS location and GSM connection status. When an NF
 The whole system needs a regulated power supply that provides both 3.3V and 4.4V. This ensures that the modules receive stable 3.3V voltage (Figure  <a href="#fig:3.7" data-reference-type="ref" data-reference="fig:3.7">1.7</a>):.
 
 <figure id="fig:3.7" data-latex-placement="H">
-<img src="/img/hardware/4.7.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.7.png" style={{width:"80.0%"}} />
 <figcaption>Power supply and Regulator</figcaption>
 </figure>
 
@@ -102,7 +102,7 @@ The GSM module requires a stable power supply in the range of 3.4–4.4 V, parti
 The XL6009 buck converter is a DC–DC step-down regulator used to supply a stable 4.4V output to the GSM module. It efficiently converts a higher input voltage into a regulated 4.4V level, ensuring proper power delivery (Figure  <a href="#fig:3.8" data-reference-type="ref" data-reference="fig:3.8">1.8</a>):.
 
 <figure id="fig:3.8" data-latex-placement="H">
-<img src="/img/hardware/4.8.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.8.png" style={{width:"80.0%"}} />
 <figcaption>XL6009 Buck Converter</figcaption>
 </figure>
 
@@ -137,14 +137,14 @@ Since Wokwi does not include all the specialized modules like GPS, NFC or GSM, w
 The Woki Simulation circuit diagram can be seen in Figure <a href="#fig:3.9" data-reference-type="ref" data-reference="fig:3.9">1.9</a>
 
 <figure id="fig:3.9" data-latex-placement="H">
-<img src="/img/hardware/4.9.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.9.png" style={{width:"80.0%"}} />
 <figcaption>Wokwi simulation circuit diagram</figcaption>
 </figure>
 
 ### Simulation Workflow Diagram
 
 <figure id="fig:3.10" data-latex-placement="H">
-<img src="/img/hardware/4.10.jpg" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.10.jpg" style={{width:"80.0%"}} />
 <figcaption>Wokwi simulation workflow diagram</figcaption>
 </figure>
 
@@ -163,7 +163,7 @@ This setup proved that the firmware worked correctly in terms of data handling, 
 ### Simulation Results
 
 <figure id="fig:3.10b" data-latex-placement="H">
-<img src="/img/hardware/4.11.png" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.11.png" style={{width:"80.0%"}} />
 <figcaption>Wokwi simulation circuit diagram with results</figcaption>
 </figure>
 
@@ -198,7 +198,7 @@ The hardware architecture presented in this chapter is directly derived from the
 As shown in Figure <a href="#fig:3.11" data-reference-type="ref" data-reference="fig:3.11">1.12</a>, the architecture shows a clear structure, starting from gathering raw data up to user-level monitoring and control.
 
 <figure id="fig:3.11" data-latex-placement="H">
-<img src="/img/hardware/4.12.jpg" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.12.jpg" style={{width:"80.0%"}} />
 <figcaption>The Fleet Tracking and Visibility System represented as a six-layer architecture, ranging from power and sensing at the base to processing, communication, storage, and application at the top, ensuring modularity and reliable data flow.</figcaption>
 </figure>
 
@@ -227,14 +227,14 @@ To better explain this architecture, the next sections include three different v
 Figure  <a href="#fig:3.12" data-reference-type="ref" data-reference="fig:3.12">1.13</a> illustrates the block diagram of the system, showing how data flows between components.
 
 <figure id="fig:3.12" data-latex-placement="H">
-<img src="/img/hardware/4.13.jpg" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.13.jpg" style={{width:"80.0%"}} />
 <figcaption>The system-level block diagram of the Fleet Tracking and Visibility System, showing data flow between sensing, processing, communication, storage, and application modules.</figcaption>
 </figure>
 
 ### Simplified Hardware Schematic Diagram
 
 <figure id="fig:3.13" data-latex-placement="H">
-<img src="/img/hardware/4.14.jpg" style={{width:"80.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.14.jpg" style={{width:"80.0%"}} />
 <figcaption>Simplified Hardware Schematic of Fleet Tracking System, showing logical connections between input sensors, ESP32-S3 controller, output peripherals and power supply.</figcaption>
 </figure>
 
@@ -255,7 +255,7 @@ Figure <a href="#fig:3.13" data-reference-type="ref" data-reference="fig:3.13">
 Professor FAREED ALVI’s review can be viewed in Appendix C (see Figure <a href="#fig:Sir Freed Alvi&#39;s Review on Circuit Diagram" data-reference-type="ref" data-reference="fig:Sir Freed Alvi&#39;s Review on Circuit Diagram">[fig:Sir Freed Alvi's Review on Circuit Diagram]</a>).
 
 <figure id="fig:3.14" data-latex-placement="H">
-<img src="/img/hardware/4.15.png" style={{width:"100.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.15.png" style={{width:"100.0%"}} />
 <figcaption>Circuit Level Schematic Diagram of Hardware Interfacing.</figcaption>
 </figure>
 
@@ -278,12 +278,12 @@ After fault resolution, the crew/team lead uses their NFC card again to confirm 
 This way, everything stays connected in real time between the main system, the vehicle hardware and the crew, making sure dispatches are handled quickly and everyone can see where the fleet is at all times Figure  <a href="#fig:3.16" data-reference-type="ref" data-reference="fig:3.16">1.16</a> and Figure  <a href="#fig:3.17" data-reference-type="ref" data-reference="fig:3.17">1.17</a>.
 
 <figure id="fig:3.16" data-latex-placement="H">
-<img src="/img/hardware/4.16.png" style={{width:"75.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.16.png" style={{width:"75.0%"}} />
 <figcaption>Complete hardware prototype of the proposed system.</figcaption>
 </figure>
 
 <figure id="fig:3.17" data-latex-placement="H">
-<img src="/img/hardware/4.17.jpeg" style={{width:"75.0%"}} />
+<img src="/fleet-management-docs/img/hardware/4.17.jpeg" style={{width:"75.0%"}} />
 <figcaption>Fully integrated hardware implementation.</figcaption>
 </figure>
 
@@ -293,13 +293,13 @@ For the initial testing and setup, the circuit was built on a breadboard. This s
 
 <figure id="fig:4.18" data-latex-placement="H">
 <div class="minipage">
-<img src="/img/hardware/4.18a.png" />
+<img src="/fleet-management-docs/img/hardware/4.18a.png" />
 </div>
 <div class="minipage">
-<img src="/img/hardware/4.18b.png" />
+<img src="/fleet-management-docs/img/hardware/4.18b.png" />
 </div>
 <div class="minipage">
-<img src="/img/hardware/4.18c.png" />
+<img src="/fleet-management-docs/img/hardware/4.18c.png" />
 </div>
 <figcaption>Breadboard-Based Hardware Testing of the Proposed System</figcaption>
 </figure>
