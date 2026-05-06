@@ -5,7 +5,7 @@ title: Appendix
 
 # Appendix
 
-# Feasibility Comparison Table
+## Feasibility Comparison Table
 
 <div class="adjustbox">
 
@@ -17,43 +17,43 @@ max width=
 <caption>Feasibility Comparison Table</caption>
 <thead>
 <tr>
-<th style="text-align: left;"><strong>Feasibility Type</strong></th>
-<th style="text-align: left;"><strong>Description</strong></th>
-<th style="text-align: left;"><strong>Key Factors Considered</strong></th>
-<th style="text-align: left;"><strong>Conclusion</strong></th>
+<th style={{textAlign:"left"}}><strong>Feasibility Type</strong></th>
+<th style={{textAlign:"left"}}><strong>Description</strong></th>
+<th style={{textAlign:"left"}}><strong>Key Factors Considered</strong></th>
+<th style={{textAlign:"left"}}><strong>Conclusion</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Technical Feasibility</td>
-<td style="text-align: left;">Checks if the suggested technologies can be effectively put into use and combined with existing systems.</td>
-<td style="text-align: left;"><ul>
+<td style={{textAlign:"left"}}>Technical Feasibility</td>
+<td style={{textAlign:"left"}}>Checks if the suggested technologies can be effectively put into use and combined with existing systems.</td>
+<td style={{textAlign:"left"}}><ul>
 <li><p>Cloud computing allows for easy scaling and access to resources from anywhere.</p></li>
 <li><p>GPS and NFC technologies offer precise real-time tracking capabilities.</p></li>
 <li><p>AI-driven route optimization improves overall efficiency.</p></li>
 <li><p>Secure compatibility with current K-Electric systems is ensured.</p></li>
 </ul></td>
-<td style="text-align: left;">Feasible – The needed technology is already available, works well, and can be used with the organization’s current systems.</td>
+<td style={{textAlign:"left"}}>Feasible – The needed technology is already available, works well, and can be used with the organization’s current systems.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Economic Feasibility</td>
-<td style="text-align: left;">Checks if the project offers a good value for money and explains why the investment is worthwhile.</td>
-<td style="text-align: left;"><ul>
+<td style={{textAlign:"left"}}>Economic Feasibility</td>
+<td style={{textAlign:"left"}}>Checks if the project offers a good value for money and explains why the investment is worthwhile.</td>
+<td style={{textAlign:"left"}}><ul>
 <li><p>Better route planning can save up to 15% on fuel expenses.</p></li>
 <li><p>Using predictive maintenance helps cut down on equipment breakdowns and repair bills.</p></li>
 <li><p>Enhancing how operations run leads to higher levels of productivity.</p></li>
 </ul></td>
-<td style="text-align: left;">Feasible – The system will result in long-term cost savings, which makes the investment a good choice.</td>
+<td style={{textAlign:"left"}}>Feasible – The system will result in long-term cost savings, which makes the investment a good choice.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Cost Feasibility</td>
-<td style="text-align: left;">Checks if the project’s cost stays within the budget and can be maintained over a long period.</td>
-<td style="text-align: left;"><ul>
+<td style={{textAlign:"left"}}>Cost Feasibility</td>
+<td style={{textAlign:"left"}}>Checks if the project’s cost stays within the budget and can be maintained over a long period.</td>
+<td style={{textAlign:"left"}}><ul>
 <li><p>The first expenses involve buying hardware like GPS and NFC devices, developing the software, and connecting everything together.</p></li>
 <li><p>Ongoing costs come from using cloud services, keeping the system running, and making regular updates.</p></li>
 <li><p>The return on investment happens because the system helps save time and lowers overall operating costs.</p></li>
 </ul></td>
-<td style="text-align: left;">Feasible – The project needs some initial spending, but the money saved on fuel, repairs, and better performance makes it a good choice for lasting success.</td>
+<td style={{textAlign:"left"}}>Feasible – The project needs some initial spending, but the money saved on fuel, repairs, and better performance makes it a good choice for lasting success.</td>
 </tr>
 </tbody>
 </table>
@@ -64,35 +64,35 @@ max width=
 
 This comparison shows that the proposed Real-Time Fleet Tracking System works well from a technical, economic, and cost point of view. It ensures efficient, scalable, and cost-effective fleet management for K-Electric.
 
-# Additional References Consulted
+## Additional References Consulted
 
 These sources were consulted during the literature review to support discussions on real-time fleet tracking benefits, response times, predictive maintenance, and security standards.
 
 1.  Aberdeen Group. (2015). *Improving Fleet Efficiency with Real-Time Tracking*.
 
-2.  JIMI IoT. *Boost Your Business with Real-Time Fleet Tracker*. Retrieved from: <https://www.jimiiot.com/news/boost-your-business-with-real-time-fleet-tracker.html>
+2.  JIMI IoT. *Boost Your Business with Real-Time Fleet Tracker*. Retrieved from: https://www.jimiiot.com/news/boost-your-business-with-real-time-fleet-tracker.html
 
-3.  FieldLogix. *Fleet Tracking Improves Customer Service via Better Response Times*. Retrieved from: <https://fieldlogix.com/news/fleet-tracking-improves-customer-service-via-better-response-times/>
+3.  FieldLogix. *Fleet Tracking Improves Customer Service via Better Response Times*. Retrieved from: https://fieldlogix.com/news/fleet-tracking-improves-customer-service-via-better-response-times/
 
-4.  Fleetx. *The Transformative Impact of Vehicle Tracking Solutions on Service and Satisfaction*. Retrieved from: <https://blog.fleetx.io/the-transformative-impact-of-vehicle-tracking-solutions-on-service-and-satisfaction/>
+4.  Fleetx. *The Transformative Impact of Vehicle Tracking Solutions on Service and Satisfaction*. Retrieved from: https://blog.fleetx.io/the-transformative-impact-of-vehicle-tracking-solutions-on-service-and-satisfaction/
 
-5.  GoFleet. (2021). *How Real-Time GPS Tracking Improves Fleet Response Times*. Retrieved from: <https://www.gofleet.com/advantages-of-real-time-tracking/>
+5.  GoFleet. (2021). *How Real-Time GPS Tracking Improves Fleet Response Times*. Retrieved from: https://www.gofleet.com/advantages-of-real-time-tracking/
 
-6.  FieldLogix. (2020). *The Benefits of Fleet Tracking for Service Response Times*. Retrieved from: <https://www.fieldlogix.com>
+6.  FieldLogix. (2020). *The Benefits of Fleet Tracking for Service Response Times*. Retrieved from: https://www.fieldlogix.com
 
-7.  IETF. *RFC 5246: The Transport Layer Security (TLS) Protocol Version 1.2*. Retrieved from: <https://datatracker.ietf.org/doc/html/rfc5246>
+7.  IETF. *RFC 5246: The Transport Layer Security (TLS) Protocol Version 1.2*. Retrieved from: https://datatracker.ietf.org/doc/html/rfc5246
 
-8.  NIST. *FIPS PUB 197: Advanced Encryption Standard (AES)*. Retrieved from: <https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf>
+8.  NIST. *FIPS PUB 197: Advanced Encryption Standard (AES)*. Retrieved from: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
 
-9.  Emerald Insight. Article on related fleet topics. Retrieved from: <https://www.emerald.com/insight/content/doi/10.1108/meq-07-2018-0134/full/html>
+9.  Emerald Insight. Article on related fleet topics. Retrieved from: https://www.emerald.com/insight/content/doi/10.1108/meq-07-2018-0134/full/html
 
-10. Translogixs. *How Predictive Maintenance Can Save Your Fleet Time and Money*. Retrieved from: <https://www.translogixs.com/blog-posts/how-predictive-maintenance-can-save-your-fleet-time-and-money>
+10. Translogixs. *How Predictive Maintenance Can Save Your Fleet Time and Money*. Retrieved from: https://www.translogixs.com/blog-posts/how-predictive-maintenance-can-save-your-fleet-time-and-money
 
-11. Fleet Owner. (n.d.). *Fleets Save More with Predictive Maintenance*. Retrieved from: <https://www.fleetowner.com/technology/article/21260642/fleets-save-more-with-predictive-maintenance>
+11. Fleet Owner. (n.d.). *Fleets Save More with Predictive Maintenance*. Retrieved from: https://www.fleetowner.com/technology/article/21260642/fleets-save-more-with-predictive-maintenance
 
-12. Prolius. *Predictive Maintenance*. Retrieved from: <https://www.prolius.com/news/predictive-maintenance>
+12. Prolius. *Predictive Maintenance*. Retrieved from: https://www.prolius.com/news/predictive-maintenance
 
-# Hardware Components Specifications and Pin Configurations
+## Hardware Components Specifications and Pin Configurations
 
 This appendix provides detailed technical specifications, pin configurations, and logical diagrams for the key hardware components used in the project.
 
@@ -135,7 +135,7 @@ ESP32-S3 Microcontroller Pin Configuration
 </div>
 
 <figure id="fig:esp32_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c1.png" />
+<img src="/img/appendix/c1.png" />
 <figcaption>ESP32-S3 full logical pinout</figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ PN532 NFC Reader Pin Configuration
 </div>
 
 <figure id="fig:pn532_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c2.png" style="width:80.0%" />
+<img src="/img/appendix/c2.png" style={{width:"80.0%"}} />
 <figcaption>PN532 NFC Reader full logical pinout</figcaption>
 </figure>
 
@@ -200,7 +200,7 @@ SIM900A GSM Module Pin Configuration
 </div>
 
 <figure id="fig:sim900a_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c3.png" style="width:80.0%" />
+<img src="/img/appendix/c3.png" style={{width:"80.0%"}} />
 <figcaption>SIM900A GSM Module full logical pinout</figcaption>
 </figure>
 
@@ -234,7 +234,7 @@ NEO M8L GPS Module Pin Configuration
 </div>
 
 <figure id="fig:neo_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c4.png" style="width:80.0%" />
+<img src="/img/appendix/c4.png" style={{width:"80.0%"}} />
 <figcaption>NEO M8L GPS Module full logical pinout</figcaption>
 </figure>
 
@@ -266,7 +266,7 @@ Micro SD Card Module Pin Configuration
 </div>
 
 <figure id="fig:sd_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c5.png" style="width:80.0%" />
+<img src="/img/appendix/c5.png" style={{width:"80.0%"}} />
 <figcaption>Micro SD Card Module (a) and (b) full logical pinout</figcaption>
 </figure>
 
@@ -300,7 +300,7 @@ Micro SD Card Module Pin Configuration
 </div>
 
 <figure id="fig:lcd_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c6.png" style="width:80.0%" />
+<img src="/img/appendix/c6.png" style={{width:"80.0%"}} />
 <figcaption>2.8" TFT LCD Display full logical pinout</figcaption>
 </figure>
 
@@ -315,7 +315,7 @@ Micro SD Card Module Pin Configuration
 - Max Current: 800mA (per regulator)
 
 <figure id="fig:power_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c7.png" style="width:80.0%" />
+<img src="/img/appendix/c7.png" style={{width:"80.0%"}} />
 <figcaption>Power supply and Regulator Circuit full logical pinout Diagram</figcaption>
 </figure>
 
@@ -340,18 +340,18 @@ Micro SD Card Module Pin Configuration
 - Dimensions: Approx. 43 mm × 21 mm × 14 mm
 
 <figure id="fig:xl6009_pinout" data-latex-placement="htbp">
-<img src="backmatter/figs/c8.png" style="width:80.0%" />
+<img src="/img/appendix/c8.png" style={{width:"80.0%"}} />
 <figcaption>XL6009 Buck Converter full logical pinout Diagram</figcaption>
 </figure>
 
 ## Sir Freed Alvi’s Review on Circuit Diagram
 
 <figure id="fig:Sir Freed Alvi&#39;s Review on Circuit Diagram" data-latex-placement="htbp">
-<img src="backmatter/figs/sir fareed&#39; review.png" style="width:80.0%" />
+<img src="/img/appendix/sir fareed&#39; review.png" style={{width:"80.0%"}} />
 <figcaption>Sir Freed Alvi’s Review on Circuit Diagram</figcaption>
 </figure>
 
-# Wokwi Simulation Code and Configuration
+## Wokwi Simulation Code and Configuration
 
 This appendix presents the complete code and configuration files used in the Wokwi online simulator to prototype and test the vehicle tracking system’s core functionality, including LCD display, SD card logging, and simulated GPS data.
 
@@ -432,12 +432,8 @@ void loop() {
 
 ### Diagram Configuration (diagram.json)
 
-<div class="adjustbox">
-
-width=
-
-    [language=JSON, caption={Wokwi Diagram Configuration JSON}, label={lst:wokwi_diagram}, basicstyle=\small\ttfamily, frame=single]
-    {
+```json
+{
       "version": 1,
       "author": "Saman Aslam",
       "editor": "wokwi",
@@ -481,8 +477,7 @@ width=
       ],
       "dependencies": {}
     }
-
-</div>
+```
 
 ### Custom Chip Definitions
 
@@ -490,9 +485,7 @@ The simulation uses custom chips for GPS, NFC, and GSM modules. Their configurat
 
 **gps-module.chip.json, nfc-reader-em-18.chip.json, and gsm-module-sim900a.chip.json** (similar structure):
 
-    [language=JSON, caption={Example Custom Chip JSON 
-    (gps-module.chip.json)}
-    , label={lst:custom_chip_json}]
+```json
     {
       "name": "gps-module",
       "author": "Saman Aslam",
@@ -504,6 +497,7 @@ The simulation uses custom chips for GPS, NFC, and GSM modules. Their configurat
       ],
       "controls": []
     }
+```
 
 **Custom Chip C Code** (identical placeholder for all three modules):
 
@@ -918,36 +912,36 @@ void loop() {
 }
 ```
 
-# Hardware Components Purchase Receipts
+## Hardware Components Purchase Receipts
 
 This appendix includes scanned copies/receipts (pay slips) of the purchases for the key hardware components used in the project prototype. These documents verify the acquisition and associated costs of the components.
 
 <figure id="fig:receipt1" data-latex-placement="htbp">
-<img src="backmatter/figs/E1.jpg" style="width:90.0%" />
+<img src="/img/appendix/E1.jpg" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 1 (e.g., ESP32-S3 or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt2" data-latex-placement="htbp">
-<img src="backmatter/figs/E2.png" style="width:90.0%" />
+<img src="/img/appendix/E2.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 2 (e.g., PN532 NFC Reader or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt3" data-latex-placement="htbp">
-<img src="backmatter/figs/E3.png" style="width:90.0%" />
+<img src="/img/appendix/E3.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 3 (e.g., SIM900A GSM Module or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt4" data-latex-placement="htbp">
-<img src="backmatter/figs/E4.png" style="width:90.0%" />
+<img src="/img/appendix/E4.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 4 (e.g., NEO M8L GPS Module or related component)</figcaption>
 </figure>
 
 <figure id="fig:receipt5" data-latex-placement="htbp">
-<img src="backmatter/figs/E5.png" style="width:90.0%" />
+<img src="/img/appendix/E5.png" style={{width:"90.0%"}} />
 <figcaption>Purchase Receipt 5 (e.g., Additional components such as TFT LCD, SD Card Module, or power supplies)</figcaption>
 </figure>
 
-# AI Dispatch Model Features, Training, and API Integration
+## AI Dispatch Model Features, Training, and API Integration
 
 This appendix details the machine learning model used for intelligent vehicle dispatching, including input features, rule-based target calculation, API endpoints, backend integration, synthetic training data generation, and performance metrics.
 
@@ -1132,17 +1126,17 @@ Example extracted feature object:
 }
 ```
 
-# Project Resources
+## Project Resources
 
 The complete source code, documentation, and related resources for the AI Powered Fleet Management and Visibility System are available online:
 
 - **GitHub Repository:**
 
-  <https://github.com/SYD-Taha/Ai-Powered-Fleet-Management-and-Visibilty-System>
+  https://github.com/SYD-Taha/Ai-Powered-Fleet-Management-and-Visibilty-System
 
 - **Project Documentation:**
 
-  <https://github.com/SYD-Taha/fleet-management-docs>
+  https://github.com/SYD-Taha/fleet-management-docs
 
 These resources provide access to the implementation details, setup instructions, and additional materials referenced throughout this document.
 
@@ -1152,7 +1146,7 @@ For inquiries, collaboration, or further information about this project, please 
 
 | **Name** | **Email** | **GitHub** |
 |:---|:---|:---|
-| Syed Taha Jameel | [tsyed504@gmail.com](tsyed504@gmail.com) | <https://github.com/SYD-Taha> |
-| Rimsha Masood | [rimshamasood48@gmail.com](rimshamasood48@gmail.com) | <https://github.com/RimshaMasood> |
-| Saman Aslam | [samanaslamdanish@gmail.com](samanaslamdanish@gmail.com) | <https://github.com/> |
-| Zoya Ali | [zoya56799@gmail.com](zoya56799@gmail.com) | <https://github.com/Zoyaali11> |
+| Syed Taha Jameel | [tsyed504@gmail.com](tsyed504@gmail.com) | https://github.com/SYD-Taha |
+| Rimsha Masood | [rimshamasood48@gmail.com](rimshamasood48@gmail.com) | https://github.com/RimshaMasood |
+| Saman Aslam | [samanaslamdanish@gmail.com](samanaslamdanish@gmail.com) | https://github.com/ |
+| Zoya Ali | [zoya56799@gmail.com](zoya56799@gmail.com) | https://github.com/Zoyaali11 |

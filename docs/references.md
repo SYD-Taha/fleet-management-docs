@@ -21,7 +21,7 @@ Anon. 2024. *\[Details Not Provided\]*.
 
 <div id="ref-BenDaya2019" class="csl-entry">
 
-Ben-Daya, M., E. Hassini, and Z. Bahroun. 2019. “Internet of Things and Supply Chain Management: A Literature Review.” *International Journal of Production Research* 57 (15–16): 4719–42. <https://doi.org/10.1080/00207543.2017.1402140>.
+Ben-Daya, M., E. Hassini, and Z. Bahroun. 2019. “Internet of Things and Supply Chain Management: A Literature Review.” *International Journal of Production Research* 57 (15–16): 4719–42. https://doi.org/10.1080/00207543.2017.1402140.
 
 </div>
 
@@ -33,7 +33,7 @@ Ben-Daya, M., E. Hassini, and Z. Bahroun. 2019. “Internet of Things and Supply
 
 <div id="ref-Choi2018" class="csl-entry">
 
-Choi, T. M., S. W. Wallace, and Y. Wang. 2018. “Big Data Analytics in Operations Management.” *Production and Operations Management* 27 (10): 1868–88. <https://doi.org/10.1111/poms.12838>.
+Choi, T. M., S. W. Wallace, and Y. Wang. 2018. “Big Data Analytics in Operations Management.” *Production and Operations Management* 27 (10): 1868–88. https://doi.org/10.1111/poms.12838.
 
 </div>
 
@@ -87,7 +87,7 @@ EUTC Global Advisory Council. 2025. *Artificial Intelligence in Electric Utiliti
 
 <div id="ref-Ivanov2020" class="csl-entry">
 
-Ivanov, D., and A. Dolgui. 2020. “Viability of Intertwined Supply Networks: Extending the Supply Chain Resilience Angles Towards Survivability.” *International Journal of Production Research* 58 (10): 2904–15. <https://doi.org/10.1080/00207543.2020.1750727>.
+Ivanov, D., and A. Dolgui. 2020. “Viability of Intertwined Supply Networks: Extending the Supply Chain Resilience Angles Towards Survivability.” *International Journal of Production Research* 58 (10): 2904–15. https://doi.org/10.1080/00207543.2020.1750727.
 
 </div>
 
@@ -105,7 +105,7 @@ Ivanov, D., and A. Dolgui. 2020. “Viability of Intertwined Supply Networks: Ex
 
 <div id="ref-Min2019" class="csl-entry">
 
-Min, H. 2019. “Artificial Intelligence in Supply Chain Management: Theory and Applications.” *International Journal of Logistics Research and Applications* 22 (3): 177–86. <https://doi.org/10.1080/13675567.2018.1459520>.
+Min, H. 2019. “Artificial Intelligence in Supply Chain Management: Theory and Applications.” *International Journal of Logistics Research and Applications* 22 (3): 177–86. https://doi.org/10.1080/13675567.2018.1459520.
 
 </div>
 
@@ -135,7 +135,7 @@ Mohamed, F. 2025. “Assessment of the Effect of Fleet Management Software on Op
 
 <div id="ref-Queiroz2022" class="csl-entry">
 
-Queiroz, M. M., S. Fosso Wamba, C. J. Chiappetta Jabbour, and M. C. Machado. 2022. “Supply Chain Resilience in the UK During the Coronavirus Pandemic: A Resource Orchestration Perspective.” *International Journal of Production Economics* 245. <https://doi.org/10.1016/j.ijpe.2021.108405>.
+Queiroz, M. M., S. Fosso Wamba, C. J. Chiappetta Jabbour, and M. C. Machado. 2022. “Supply Chain Resilience in the UK During the Coronavirus Pandemic: A Resource Orchestration Perspective.” *International Journal of Production Economics* 245. https://doi.org/10.1016/j.ijpe.2021.108405.
 
 </div>
 
@@ -177,7 +177,7 @@ T&D World. 2025. T&D World.
 
 <div id="ref-Tiwari2018" class="csl-entry">
 
-Tiwari, S., H. M. Wee, and Y. Daryanto. 2018. “Big Data Analytics in Supply Chain Management: A State-of-the-Art Literature Review.” *Computers & Operations Research* 98: 254–64. <https://doi.org/10.1016/j.cor.2017.07.002>.
+Tiwari, S., H. M. Wee, and Y. Daryanto. 2018. “Big Data Analytics in Supply Chain Management: A State-of-the-Art Literature Review.” *Computers & Operations Research* 98: 254–64. https://doi.org/10.1016/j.cor.2017.07.002.
 
 </div>
 

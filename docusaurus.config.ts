@@ -31,9 +31,6 @@ const config: Config = {
           routeBasePath: 'docs',
           exclude: [
             'superpowers/**',
-            // Uncleaned raw Pandoc output — re-enabled per chapter as Tasks 6-8 clean each.
-            'references.md',
-            'appendix.md',
           ],
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],

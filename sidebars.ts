@@ -11,8 +11,8 @@ const sidebars: SidebarsConfig = {
     'ai',
     'vehicle-simulator',
     'conclusions',
-    // Re-enabled in later tasks once chapter files exist:
-    // 'references', 'appendix',
+    'references',
+    'appendix',
   ],
 };
 
