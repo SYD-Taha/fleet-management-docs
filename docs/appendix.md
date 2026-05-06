@@ -1146,7 +1146,7 @@ For inquiries, collaboration, or further information about this project, please 
 
 | **Name** | **Email** | **GitHub** |
 |:---|:---|:---|
-| Syed Taha Jameel | [tsyed504@gmail.com](tsyed504@gmail.com) | https://github.com/SYD-Taha |
-| Rimsha Masood | [rimshamasood48@gmail.com](rimshamasood48@gmail.com) | https://github.com/RimshaMasood |
-| Saman Aslam | [samanaslamdanish@gmail.com](samanaslamdanish@gmail.com) | https://github.com/ |
-| Zoya Ali | [zoya56799@gmail.com](zoya56799@gmail.com) | https://github.com/Zoyaali11 |
+| Syed Taha Jameel | [tsyed504@gmail.com](mailto:tsyed504@gmail.com) | https://github.com/SYD-Taha |
+| Rimsha Masood | [rimshamasood48@gmail.com](mailto:rimshamasood48@gmail.com) | https://github.com/RimshaMasood |
+| Saman Aslam | [samanaslamdanish@gmail.com](mailto:samanaslamdanish@gmail.com) | https://github.com/ |
+| Zoya Ali | [zoya56799@gmail.com](mailto:zoya56799@gmail.com) | https://github.com/Zoyaali11 |
