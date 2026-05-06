@@ -7,8 +7,11 @@ const sidebars: SidebarsConfig = {
     'system-description',
     'hardware',
     'backend',
+    'frontend',
+    'ai',
+    'vehicle-simulator',
+    'conclusions',
     // Re-enabled in later tasks once chapter files exist:
-    // 'frontend', 'ai', 'vehicle-simulator', 'conclusions',
     // 'references', 'appendix',
   ],
 };

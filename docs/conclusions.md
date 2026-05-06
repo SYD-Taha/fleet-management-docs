@@ -5,7 +5,6 @@ title: "Conclusions and Future Work"
 
 # Conclusions and Future Work
 
-# Conclusion and Future Work
 
 ## Conclusion
 

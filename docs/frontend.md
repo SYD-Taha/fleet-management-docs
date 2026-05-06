@@ -5,7 +5,6 @@ title: "Frontend"
 
 # Frontend
 
-# Front-End Design and Implementation
 
 ## Introduction
 
@@ -34,7 +33,7 @@ Key Front-End Components, Technologies, and Functionalities
 </div>
 
 <figure id="fig:4.1" data-latex-placement="H">
-<img src="chapter6/figs/6.1.png" style="width:80.0%" />
+<img src="/img/frontend/6.1.png" style={{width:"80.0%"}} />
 <figcaption>Structural Overview of Front-End Components</figcaption>
 </figure>
 
@@ -71,7 +70,7 @@ The dashboard interface is the primary feature of the front-end system, providin
 - Vehicle and fault state management
 
 <figure id="fig:4.2" data-latex-placement="H">
-<img src="chapter6/figs/6.2.png" style="width:80.0%" />
+<img src="/img/frontend/6.2.png" style={{width:"80.0%"}} />
 <figcaption>Dashboard Interface Layout</figcaption>
 </figure>
 
@@ -92,7 +91,7 @@ The map integration module is a cornerstone of the system, offering a spatial an
 The map is constantly updated with real-time GPS data, ensuring that users can track vehicles and adjust their operations as necessary.
 
 <figure id="fig:4.3" data-latex-placement="H">
-<img src="chapter6/figs/6.3.png" style="width:80.0%" />
+<img src="/img/frontend/6.3.png" style={{width:"80.0%"}} />
 <figcaption>Map Integration Module Workflow</figcaption>
 </figure>
 
@@ -109,7 +108,7 @@ The authentication UI ensures that only authorized users can access the system, 
 - **Secure Session Handling:** Uses JWT tokens to manage sessions, ensuring that users remain authenticated without needing to log in repeatedly.
 
 <figure id="fig:4.4" data-latex-placement="H">
-<img src="chapter6/figs/6.4.png" style="width:80.0%" />
+<img src="/img/frontend/6.4.png" style={{width:"80.0%"}} />
 <figcaption>Authentication System</figcaption>
 </figure>
 
@@ -126,7 +125,7 @@ The notification system is designed to provide real-time alerts based on events 
 - **Actionable:** Managers can interact with notifications to trigger corrective actions, such as dispatching a vehicle to resolve an issue.
 
 <figure id="fig:4.5" data-latex-placement="H">
-<img src="chapter6/figs/6.5.png" style="width:80.0%" />
+<img src="/img/frontend/6.5.png" style={{width:"80.0%"}} />
 <figcaption>Notification Flow</figcaption>
 </figure>
 
@@ -143,7 +142,7 @@ The front-end follows a component-based architecture built with React.js. The ar
 3.  **Integration Layer:** Interfaces with external services (REST APIs, WebSockets, mapping APIs) to fetch and update data in real-time.
 
 <figure id="fig:4.6" data-latex-placement="H">
-<img src="chapter6/figs/6.6.png" style="width:80.0%" />
+<img src="/img/frontend/6.6.png" style={{width:"80.0%"}} />
 <figcaption>Front-End Architecture Overview</figcaption>
 </figure>
 
@@ -160,7 +159,7 @@ Data synchronization is essential for real-time updates in the fleet tracking sy
 3.  **Output:** The front-end system updates components such as the dashboard and map to reflect the latest fleet status.
 
 <figure id="fig:4.7" data-latex-placement="H">
-<img src="chapter6/figs/6.7.png" style="width:80.0%" />
+<img src="/img/frontend/6.7.png" style={{width:"80.0%"}} />
 <figcaption>Data Flow with state Management and Mapping API</figcaption>
 </figure>
 
@@ -177,7 +176,7 @@ Several challenges were encountered during the development phase:
 - **Cross-Browser Compatibility:** Extensive testing was carried out across different browsers (Chrome, Firefox, Edge) to ensure consistent functionality.
 
 <figure id="fig:4.8" data-latex-placement="H">
-<img src="chapter6/figs/6.8.png" style="width:80.0%" />
+<img src="/img/frontend/6.8.png" style={{width:"80.0%"}} />
 <figcaption>Challenges and Troubleshooting</figcaption>
 </figure>
 

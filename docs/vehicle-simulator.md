@@ -5,7 +5,6 @@ title: "Vehicle Simulator"
 
 # Vehicle Simulator
 
-# Vehicle Simulator
 
 ## Introduction
 
@@ -58,7 +57,7 @@ The Vehicle Simulator uses these technologies:
 ## System Architecture
 
 <figure id="fig:7.1" data-latex-placement="H">
-<img src="chapter8/figs/8.1.png" style="width:90.0%" />
+<img src="/img/vehicle-simulator/8.1.png" style={{width:"90.0%"}} />
 <figcaption>Architecture of system which shows how the vehicle simulator communicates with the backend, MQTT broker, and routing services to manage vehicle movement.</figcaption>
 </figure>
 
@@ -122,7 +121,7 @@ It sends:
 
 Automatically reconnects if the MQTT connection is lost.
 
-MQTT Topics: vehicle/{number}/gps, vehicle/{number}/status, vehicle/{number}/resolved
+MQTT Topics: `vehicle/{number}/gps`, `vehicle/{number}/status`, `vehicle/{number}/resolved`
 
 ### Routing Service
 
@@ -161,7 +160,7 @@ After completing the work, the vehicle status is reset to available, making it r
 ### Initialization Workflow
 
 <figure id="fig:7.2" data-latex-placement="H">
-<img src="chapter8/figs/8.2.png" style="width:90.0%" />
+<img src="/img/vehicle-simulator/8.2.png" style={{width:"90.0%"}} />
 <figcaption>Initialization Workflow Auto Login, MQTT Connection, Vehicle Fetch and State Setup</figcaption>
 </figure>
 
@@ -170,7 +169,7 @@ This explains the initialization workflow where the simulator automatically logs
 ### Dispatch Detection Workflow
 
 <figure id="fig:7.3" data-latex-placement="H">
-<img src="chapter8/figs/8.3.png" style="width:90.0%" />
+<img src="/img/vehicle-simulator/8.3.png" style={{width:"90.0%"}} />
 <figcaption>The simulator periodically detects new dispatch work, validates each assignment, and calculates a route to put the selected vehicle on route.</figcaption>
 </figure>
 
@@ -179,7 +178,7 @@ This represent how the simulator periodically detects new dispatch work and deci
 ### GPS Movement Workflow
 
 <figure id="fig:7.4" data-latex-placement="H">
-<img src="chapter8/figs/8.4.png" style="width:90.0%" />
+<img src="/img/vehicle-simulator/8.4.png" style={{width:"90.0%"}} />
 <figcaption>GPS Movement Workflow, Vehicle Position Update, Publishing and Arrival Check (Every 3 Seconds)</figcaption>
 </figure>
 
@@ -188,7 +187,7 @@ In this workflow, the simulator moves each vehicle step by step along its planne
 ### Arrival and Work Completion Workflow
 
 <figure id="fig:7.5" data-latex-placement="H">
-<img src="chapter8/figs/8.5.png" style="width:90.0%" />
+<img src="/img/vehicle-simulator/8.5.png" style={{width:"90.0%"}} />
 <figcaption>Vehicle Arrival, Working State, Completion and Reset Workflow</figcaption>
 </figure>
 
@@ -197,7 +196,7 @@ It focuses on what happens when the simulated vehicle arrives at the fault locat
 ### Complete System Integration Flow
 
 <figure id="fig:7.6" data-latex-placement="H">
-<img src="chapter8/figs/8.6.png" style="width:90.0%" />
+<img src="/img/vehicle-simulator/8.6.png" style={{width:"90.0%"}} />
 <figcaption>System Integration Flow in which Simulator, Backend APIs and MQTT Working Together</figcaption>
 </figure>
 
@@ -325,7 +324,7 @@ Monitoring MQTT Messages
 
 - Use an MQTT client (like MQTT Explorer) to:
 
-- Subscribe to vehicle/{vehicle_number}/gps
+- Subscribe to `vehicle/{vehicle_number}/gps`
 
 - Watch location updates in real-time
 
