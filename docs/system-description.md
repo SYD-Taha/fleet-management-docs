@@ -5,7 +5,6 @@ title: "System Description"
 
 # System Description
 
-# System Design and Architecture
 
 ## Overview
 
@@ -28,7 +27,7 @@ The system is composed of the following main components:
 ### High-Level Architecture Diagram
 
 <figure id="fig:3.1" data-latex-placement="h">
-<img src="chapter3/figs/3.1.png" style="width:95.0%" />
+<img src="/img/system-description/3.1.png" style={{width:"95.0%"}} />
 <figcaption>High-Level Architecture Diagram</figcaption>
 </figure>
 

@@ -5,7 +5,6 @@ title: "Literature Review"
 
 # Literature Review
 
-# Literature Review
 
 ## Literature Review
 

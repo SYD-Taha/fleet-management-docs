@@ -5,7 +5,6 @@ title: "Backend"
 
 # Backend
 
-# Backend Implementation in AI-Powered Real-Time Fleet Tracking and Dispatch System
 
 ## Introduction
 
@@ -54,7 +53,7 @@ Below are the main parts of the backend system.
 The backend integrates various components to ensure complete real-time visibility of fleet activities is shown in Figure <a href="#fig:5.1" data-reference-type="ref" data-reference="fig:5.1">1.1</a>.
 
 <figure id="fig:5.1" data-latex-placement="H">
-<img src="chapter5/figs/5.1.png" style="width:80.0%" />
+<img src="/img/backend/5.1.png" style={{width:"80.0%"}} />
 <figcaption>Backend Components Overview</figcaption>
 </figure>
 
@@ -63,7 +62,7 @@ The backend integrates various components to ensure complete real-time visibilit
 The backend follows a layered architectural design where each layer performs a dedicated function from hardware data collection to frontend data presentation. This structured design using a modular and scalable architecture ensures efficient data handling, real-time updates and secure communication between hardware devices and the frontend interface.
 
 <figure id="fig:5.2" data-latex-placement="H">
-<img src="chapter5/figs/5.2.png" style="width:80.0%" />
+<img src="/img/backend/5.2.png" style={{width:"80.0%"}} />
 <figcaption>High-level architecture connecting frontend, Express backend, MQTT, Socket.io, ML, cache and Mongo DB</figcaption>
 </figure>
 
@@ -123,7 +122,7 @@ This modular approach ensures readability, scalability and easier debugging.
 The Entity Relationship Diagram (ERD) represents the logical structure of the database used in the backend. It shows how different entities such as User, Driver, Vehicle, Trip and GPS interact with each other through one-to-one and one-to-many relationships.
 
 <figure id="fig:5.3" data-latex-placement="H">
-<img src="chapter5/figs/5.3.png" style="width:80.0%" />
+<img src="/img/backend/5.3.png" style={{width:"80.0%"}} />
 <figcaption>Entity Relationship Diagram (ERD)</figcaption>
 </figure>
 
@@ -190,7 +189,7 @@ Key API Endpoints
 </div>
 
 <figure id="fig:5.4" data-latex-placement="H">
-<img src="chapter5/figs/5.4.png" style="width:80.0%" />
+<img src="/img/backend/5.4.png" style={{width:"80.0%"}} />
 <figcaption>API Request Handling Flow</figcaption>
 </figure>
 
@@ -229,7 +228,7 @@ To make the system easier to understand and manage, the overall process is split
 ### Fault Reporting and Dispatch Flow
 
 <figure id="fig:5.6" data-latex-placement="H">
-<img src="chapter5/figs/5.5.png" style="width:80.0%" />
+<img src="/img/backend/5.5.png" style={{width:"80.0%"}} />
 <figcaption>Workflow showing how a new fault reported through the Fault API triggers fault creation, vehicle scoring and selection, auto-dispatch and MQTT alert notification to the assigned vehicle</figcaption>
 </figure>
 
@@ -242,7 +241,7 @@ Finally, an alert is sent to the vehicle’s device using MQTT, and a record of 
 ### Driver Confirmation Flow
 
 <figure id="fig:5.7" data-latex-placement="H">
-<img src="chapter5/figs/5.6.png" style="width:80.0%" />
+<img src="/img/backend/5.6.png" style={{width:"80.0%"}} />
 <figcaption>Workflow illustrating driver confirmation from the hardware device via MQTT, fault status update, trip reuse or creation and Web Socket events sent back to the frontend.</figcaption>
 </figure>
 
@@ -253,7 +252,7 @@ Finally, several Web Socket events (as discussed in frontend chapter) are sent t
 ### GPS Tracking and Arrival Detection Flow
 
 <figure id="fig:5.8" data-latex-placement="H">
-<img src="chapter5/figs/5.7.png" style="width:80.0%" />
+<img src="/img/backend/5.7.png" style={{width:"80.0%"}} />
 <figcaption>Workflow depicting real-time GPS updates, distance calculation, and vehicle arrival detection at fault location.</figcaption>
 </figure>
 
@@ -264,7 +263,7 @@ Figure <a href="#fig:5.8" data-reference-type="ref" data-reference="fig:5.8">1.
 ### Fault Resolution Flow
 
 <figure id="fig:5.9" data-latex-placement="H">
-<img src="chapter5/figs/5.8.png" style="width:80.0%" />
+<img src="/img/backend/5.8.png" style={{width:"80.0%"}} />
 <figcaption>Workflow showing fault resolution confirmation, trip completion, and vehicle status reset.</figcaption>
 </figure>
 
