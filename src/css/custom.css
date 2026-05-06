@@ -1,4 +1,11 @@
+/* Mintlify-style overrides for Docusaurus 3 */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 :root {
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
   --ifm-color-primary: #4F46E5;
   --ifm-color-primary-dark: #4338CA;
   --ifm-color-primary-darker: #3730A3;
@@ -6,7 +13,26 @@
   --ifm-color-primary-light: #6366F1;
   --ifm-color-primary-lighter: #818CF8;
   --ifm-color-primary-lightest: #A5B4FC;
-  --ifm-code-font-size: 95%;
+
+  --ifm-background-color: #FFFFFF;
+  --ifm-background-surface-color: #F9FAFB;
+
+  --ifm-heading-font-weight: 700;
+  --ifm-h1-font-size: 2.25rem;
+  --ifm-h2-font-size: 1.625rem;
+  --ifm-h3-font-size: 1.25rem;
+  --ifm-line-height-base: 1.65;
+
+  --ifm-code-font-size: 92%;
+  --ifm-code-background: rgba(79, 70, 229, 0.08);
+  --ifm-code-padding-horizontal: 0.35rem;
+  --ifm-code-padding-vertical: 0.15rem;
+
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  --ifm-navbar-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+
+  --ifm-toc-border-color: transparent;
+  --docsearch-primary-color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] {
@@ -17,4 +43,67 @@
   --ifm-color-primary-light: #A5B4FC;
   --ifm-color-primary-lighter: #C7D2FE;
   --ifm-color-primary-lightest: #E0E7FF;
+
+  --ifm-background-color: #0B0F1A;
+  --ifm-background-surface-color: #111827;
+  --ifm-navbar-background-color: rgba(11, 15, 26, 0.85);
+  --ifm-code-background: rgba(129, 140, 248, 0.15);
+}
+
+/* Sticky blurred navbar */
+.navbar {
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+}
+
+/* Tighter content column for readability */
+.theme-doc-markdown {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Sidebar polish */
+.menu__link {
+  font-size: 0.92rem;
+  border-radius: 0.5rem;
+}
+.menu__link--active {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+}
+[data-theme='dark'] .menu__link--active {
+  background: rgba(129, 140, 248, 0.18);
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* Headings */
+h1 { letter-spacing: -0.02em; }
+h2 { letter-spacing: -0.01em; margin-top: 2.5rem; }
+h3 { margin-top: 1.75rem; }
+
+/* Admonitions: more Mintlify */
+.theme-admonition {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Code block aesthetic */
+.prism-code {
+  border-radius: 0.75rem;
+  font-size: 0.88rem;
+}
+
+/* Right TOC */
+.table-of-contents {
+  font-size: 0.85rem;
+}
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Tables */
+table {
+  font-size: 0.92rem;
 }
